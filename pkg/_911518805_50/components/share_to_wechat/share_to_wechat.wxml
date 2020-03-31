@@ -1,4 +1,0 @@
-<view bindtap="onTapShareButton" class="share-action">
-    <view animation="{{labelAnimationData}}" class="share-label">分享</view>
-    <view animation="{{iconAnimationData}}" class="share-icon"></view>
-</view>

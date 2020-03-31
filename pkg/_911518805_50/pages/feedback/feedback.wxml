@@ -1,3 +1,0 @@
-<view class="container">
-    <button openType="feedback">上传日志</button>
-</view>

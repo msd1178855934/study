@@ -1,6 +1,0 @@
-{
-    "component": true,
-    "usingComponents": {
-        "app-card-layout": "/components/app-cards/app-card-layout/app-card-layout"
-    }
-}

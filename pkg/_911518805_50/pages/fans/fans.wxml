@@ -1,4 +1,0 @@
-<import src="../following/user_item.wxml"></import>
-<template is="user-item" data="{{lists:userLists}}" wx:if="{{userLists.length>0}}"></template>
-<view class="user-list--empty" wx:if="{{isUserListEmpty}}">还没有粉丝</view>
-<bottom-loading showBottomLoading="{{shouldShowBottomLoading}}"></bottom-loading>

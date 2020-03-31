@@ -1,9 +1,0 @@
-<navigation-bar back="{{true}}" title="疫情热门信息"></navigation-bar>
-<view class="main">
-    <hot-feed-card bind:longpress="handleLongPress" bind:tap="clickItem" data-index="{{index}}" data-recommend_id="{{item.recommend_id}}" id="{{'hotlist'+index}}" index="{{index}}" item="{{item}}" listLength="{{renderList.length}}" wx:for="{{renderList}}" wx:key="{{item.recommend_id}}"></hot-feed-card>
-    <view class="split-line bottom">
-        <view class="line"></view>
-        <view class="text">没有更多疫情信息</view>
-        <view class="line"></view>
-    </view>
-</view>

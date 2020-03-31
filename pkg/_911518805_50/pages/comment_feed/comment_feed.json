@@ -1,9 +1,0 @@
-{
-    "usingComponents": {
-        "comment-text": "/components/comment_text/comment_text",
-        "bottom-loading": "/components/bottom_loading/bottom_loading",
-        "like": "/components/like/like",
-        "impression-poi": "/components/impression_poi/impression_poi"
-    },
-    "backgroundColor": "#ffffff"
-}

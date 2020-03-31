@@ -1,4 +1,0 @@
-<view class="page-observer-mask">
-    <view class="observer-section"></view>
-    <slot></slot>
-</view>

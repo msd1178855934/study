@@ -1,7 +1,0 @@
-<swiper bindchange="bindSwiperChange" current="{{current}}" duration="200" style="height: 100vh;">
-    <swiper-item wx:for="{{renderPicArr}}">
-        <image class="allScreen" id="{{'swiperItem'+index}}" mode="aspectFit" src="{{item.filePath}}" wx:if="{{item.type==0}}"></image>
-        <video autoplay="{{false}}" class="mod-video" controls="" enableProgressGesture="" id="{{'swiperItem'+index}}" loop="{{true}}" poster="{{item.thumbFilePath}}" showCenterPlayBtn="" showFullscreenBtn="{{true}}" showPlayBtn="" showProgress="" src="{{item.filePath}}" wx:if="{{item.type==1}}"></video>
-    </swiper-item>
-</swiper>
-<image bindtap="onTapDelete" class="deleteButton" src="https://res.wx.qq.com/a/fed_upload/988503ed-fe6b-4b5f-8056-4a05ac0b44bd/delete.png" wx:if="{{showDeleteButton}}"></image>

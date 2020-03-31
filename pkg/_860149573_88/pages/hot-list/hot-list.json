@@ -1,7 +1,0 @@
-{
-    "backgroundColor": "#ededed",
-    "navigationBarTitleText": "实时热榜",
-    "usingComponents": {
-        "navigation-bar": "/weui-miniprogram/navigation-bar/navigation-bar"
-    }
-}

@@ -1,4 +1,0 @@
-<import src="user_item.wxml"></import>
-<template is="user-item" data="{{lists:userLists}}" wx:if="{{userLists.length>0}}"></template>
-<view class="user-list--empty" wx:if="{{isUserListEmpty}}">还没有关注</view>
-<bottom-loading showBottomLoading="{{shouldShowBottomLoading}}"></bottom-loading>

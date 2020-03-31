@@ -1,4 +1,0 @@
-<view>
-    <image bindtap="adddetial" class="add_icon" src="{{imgSrc}}" wx:if="{{imgSrc}}"></image>
-    <slot></slot>
-</view>

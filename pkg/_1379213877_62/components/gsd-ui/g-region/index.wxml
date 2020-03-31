@@ -1,3 +1,0 @@
-<picker bind:columnchange="handleColumnChange" bindchange="handleChange" mode="multiSelector" range="{{range}}" rangeKey="name" value="{{valueIndex}}">
-    <slot></slot>
-</picker>

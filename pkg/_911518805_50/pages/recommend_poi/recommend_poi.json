@@ -1,9 +1,0 @@
-{
-    "usingComponents": {
-        "bottom-loading": "/components/bottom_loading/bottom_loading",
-        "poi_recommend": "/components/poi_recommend/poi_recommend"
-    },
-    "backgroundColor": "#f1f1f1",
-    "navigationBarBackgroundColor": "#f1f1f1",
-    "navigationBarTitleText": "今天吃什么"
-}

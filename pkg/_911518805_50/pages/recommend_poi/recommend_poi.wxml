@@ -1,9 +1,0 @@
-<view>
-    <view class="poi-list-wrap" wx:if="{{renderPoiList.length>0}}">
-        <block wx:for="{{renderPoiList}}" wx:for-item="poi" wx:key="id">
-            <view class="{{index!==0?'poi-before':''}}"></view>
-            <poi_recommend data-index="{{index}}" poiData="{{poi}}" poiDataIndex="{{index}}"></poi_recommend>
-        </block>
-    </view>
-    <bottom-loading id="loading" showBottomLoading="{{shouldShowBottomLoading}}"></bottom-loading>
-</view>

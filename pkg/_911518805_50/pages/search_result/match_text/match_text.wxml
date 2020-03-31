@@ -1,6 +1,0 @@
-<span wx:if="{{!t1&&!t2&&!t3}}">{{text}}</span>
-<span wx:else>
-    <span>{{t1}}</span>
-    <span class="matched">{{t2}}</span>
-    <span>{{t3}}</span>
-</span>

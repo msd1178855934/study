@@ -1,5 +1,0 @@
-<view class="mod-order-panel">
-    <view catchtap="bindtapCategoryItem" class="mod-item {{item.id==selectedId?'mod-item_selected':''}}" data-id="{{item.id}}" data-name="{{item.name}}" wx:for="{{options}}" wx:key="index">
-            {{item.name}}
-        </view>
-</view>

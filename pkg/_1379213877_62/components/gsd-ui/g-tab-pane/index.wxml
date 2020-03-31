@@ -1,3 +1,0 @@
-<view class="tab-pane" style="{{tabPaneStyle}}">
-    <slot></slot>
-</view>

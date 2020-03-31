@@ -1,9 +1,0 @@
-<view animation="{{animationData}}" class="alarm {{alarmExtraStyle?alarmExtraStyle:'alarm-top'}} {{isVisible?'':'hidden'}}" style="width: {{shouldSetWidth0?'0':'auto'}};">
-    <view class="alarm__left">
-        <view class="icon-alarm"></view>
-    </view>
-    <view animation="{{animationOpacityData}}" class="alarm__right" style="{{isTextOpacity0?'opacity: 0;':''}}">
-        {{text}}
-    </view>
-</view>
-<view class="{{alarmExtraStyle?'':'alarm-top-placeholder'}}"></view>
