@@ -1,0 +1,11 @@
+<!--pages/user/user.wxml-->
+<view class="container">
+    <view class="section">
+        <text>设置头像</text>
+        <image src="{{ avatar }}" bind:tap="changeAvatar"/>
+    </view>
+    <view class="section">
+        <text>设置用户名</text>
+        <input value="{{ name }}" bind:blur="blurName" bind:confirm="changeName" auto-focus />
+    </view>
+</view>

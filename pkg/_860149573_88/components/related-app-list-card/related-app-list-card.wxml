@@ -1,0 +1,111 @@
+<view class="entrance-ui entrance-ui-1" wx:if="{{entranceUI===1}}">
+    <view class="related-app-list-card default-box">
+        <view class="frequently-use">
+            <text class="frequently-use-title">建议使用</text>
+            <view class="app-list">
+                <block wx:if="{{commonUseAppList.length>0}}">
+                    <view bind:tap="handleCommonAppItemClick" class="list-item {{index>=4?'line2':''}}" data-appid="{{item.appid}}" data-index="{{index}}" hoverClass="tap-mask" wx:if="{{index<=5}}" wx:for="{{commonUseAppList}}" wx:key="{{item.appid}}">
+                        <view class="app-logo image-bg">
+                            <view class="mask"></view>
+                            <image class="image" src="{{item.app_icon_url}}"></image>
+                        </view>
+                        <text class="app-name ellipsis-1">{{item.app_nick_name}}</text>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="list-item {{index>=4?'line2':''}}" wx:for="{{6}}" wx:key="{{index}}">
+                        <view class="app-logo image-bg"></view>
+                        <view class="app-name ellipsis-1 placeholder"></view>
+                    </view>
+                </block>
+                <view bind:tap="handleHistoryAppClick" class="list-item {{commonUseAppList.length>=4?'line2':''}}" hoverClass="tap-mask">
+                    <view class="app-logo image-bg">
+                        <view class="mask"></view>
+                        <image class="svg entrance" src="/resources/icons_outlined_time.svg"></image>
+                        <image class="svg darkmode entrance" src="/resources/darkmode/icons_outlined_time.svg"></image>
+                    </view>
+                    <text class="app-name ellipsis-1">最近使用</text>
+                </view>
+                <view bind:tap="handleStarAppClick" class="list-item {{commonUseAppList.length>=3?'line2':''}}" hoverClass="tap-mask">
+                    <view class="app-logo image-bg">
+                        <view class="mask"></view>
+                        <image class="svg entrance" src="/resources/icons_outlined_star.svg"></image>
+                        <image class="svg darkmode entrance" src="/resources/darkmode/icons_outlined_star.svg"></image>
+                    </view>
+                    <text class="app-name ellipsis-1">我的小程序</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="app-entrance-list">
+        <view bind:tap="handleNearbyClick" class="app-entrance-list-item" hoverClass="tap-mask">
+            <view class="mask"></view>
+            <view class="entrance-item-hd">
+                <image class="entrance-item-logo" src="/resources/icons_outlined_location_color.svg"></image>
+                <text>附近的小程序</text>
+            </view>
+        </view>
+        <view style="width: 8px"></view>
+        <view bind:tap="handleFriendsUseClick" class="app-entrance-list-item" hoverClass="tap-mask">
+            <view class="mask"></view>
+            <view class="entrance-item-hd">
+                <image class="entrance-item-logo" src="/resources/icons_outlined_group_detail_color.svg"></image>
+                <text>大家在用</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="entrance-ui entrance-ui-0" wx:else>
+    <view class=" related-app-list-card default-box">
+        <view class="frequently-use thin-border-bottom" hidden="{{commonUseAppListFetchStatus==='fail'||commonUseAppListFetchStatus==='success'&&commonUseAppList.length===0}}">
+            <text class="frequently-use-title">建议使用</text>
+            <view class="app-list">
+                <block wx:if="{{commonUseAppList.length>0}}">
+                    <view bind:tap="handleCommonAppItemClick" class="list-item {{index>=4?'line2':''}}" data-appid="{{item.appid}}" data-index="{{index}}" hoverClass="tap-mask" wx:if="{{index<=7}}" wx:for="{{commonUseAppList}}" wx:key="{{item.appid}}">
+                        <view class="app-logo image-bg">
+                            <view class="mask"></view>
+                            <image class="image" src="{{item.app_icon_url}}"></image>
+                        </view>
+                        <text class="app-name ellipsis-1">{{item.app_nick_name}}</text>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="list-item {{index>=4?'line2':''}}" wx:for="{{8}}" wx:key="{{index}}">
+                        <view class="app-logo image-bg"></view>
+                        <view class="app-name ellipsis-1 placeholder"></view>
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view class="app-entrance-list">
+            <view bind:tap="handleHistoryAppClick" class="app-entrance-list-item" hoverClass="tap-opacity">
+                <view class="entrance-item-hd">
+                    <image class="svg entrance-item-logo" src="/resources/icons_outlined_time.svg"></image>
+                    <image class="svg darkmode entrance-item-logo" src="/resources/darkmode/icons_outlined_time.svg"></image>
+                    <text>最近使用</text>
+                </view>
+            </view>
+            <view bind:tap="handleStarAppClick" class="app-entrance-list-item" hoverClass="tap-opacity">
+                <view class="entrance-item-hd">
+                    <image class="svg entrance-item-logo" src="/resources/icons_outlined_star.svg"></image>
+                    <image class="svg darkmode entrance-item-logo" src="/resources/darkmode/icons_outlined_star.svg"></image>
+                    <text>我的小程序</text>
+                </view>
+            </view>
+            <view bind:tap="handleNearbyClick" class="app-entrance-list-item nearby-app" hoverClass="tap-opacity">
+                <view class="entrance-item-hd">
+                    <image class="svg entrance-item-logo" src="/resources/icons_outlined_location.svg"></image>
+                    <image class="svg darkmode entrance-item-logo" src="/resources/darkmode/icons_outlined_location.svg"></image>
+                    <text>附近的小程序</text>
+                </view>
+            </view>
+            <view bind:tap="handleFriendsUseClick" class="app-entrance-list-item" hoverClass="tap-opacity">
+                <view class="entrance-item-hd">
+                    <image class="svg entrance-item-logo" src="/resources/icons_outlined_group_detail.svg"></image>
+                    <image class="svg darkmode entrance-item-logo" src="/resources/darkmode/icons_outlined_group_detail.svg"></image>
+                    <text>大家在用</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

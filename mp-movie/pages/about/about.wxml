@@ -1,0 +1,8 @@
+<view class="container">
+    <image class="banner" src="/images/simba.jpg"></image>
+    <text class="title">电影周周看</text>
+    <view>
+        <text>我</text><navigator hover-class="nav-hover" style="display: inline;" url="/pages/weekly/weekly" open-type="switchTab">每周推荐</navigator><text>一部好片</text>
+    </view>
+    <text>我的微博：weibo.com/simba</text>
+</view>

@@ -1,0 +1,16 @@
+<!--miniprogram/pages/index/index.wxml-->
+<button type="primary" bind:tap="queryData">查询数据</button>
+<button type="primary" bind:tap="addData">新增数据</button>
+<button type="primary" bind:tap="deleteData">删除数据</button>
+<button type="primary" bind:tap="updateData">更新数据</button>
+<button type="primary" bind:tap="getFileUrl">文件资源</button>
+<button type="primary" bind:tap="httpRequest">HTTP请求</button>
+<button type="primary" bind:tap="connectMySQL">MySQL版本</button>
+<button open-type="getUserInfo" bind:getuserinfo="getuserinfo">获取用户信息</button>
+<button type="primary" bind:tap="normalQR">生成二维码</button>
+<image src="{{ qr }}" wx:if="{{ qr }}" style="width: 750rpx; height: 800rpx;"></image>
+<button type="primary" bind:tap="getCode">生成小程序码</button>
+<image src="{{ code }}" wx:if="{{ code }}" style="width: 750rpx; height: 800rpx;"></image>
+<form report-submit="{{ true }}" bind:submit="messageSubmit">
+    <button form-type="submit">推送模板消息</button>
+</form>

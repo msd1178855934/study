@@ -1,0 +1,45 @@
+<view>
+    <view catchtap="onTapImpression" class="impression-content" data-commentid="{{renderData.commentId}}" data-index="{{impressionDataIndex}}">
+        <view class="impression-header">
+            <view catchtap="bindtapToUserProfile" class="author impression-author" data-contact="{{renderData.contact}}">
+                <image class="author-avatar" mode="aspectFill" src="{{renderData.contact.headImgUrl}}"></image>
+                <view class="author-nickname {{renderData.contact.isNameLenRestrict?'author-nickname--restricted':''}}">{{renderData.contact.baseName}}</view>
+                <view class="author-extra-label" wx:if="{{renderData.contact.nameExtra}}">{{renderData.contact.nameExtra}}</view>
+            </view>
+            <view class="impression-time" wx:if="{{renderData.timeString}}">{{renderData.timeString}}</view>
+        </view>
+        <view class="formatted-image-layout" wx:if="{{renderData.commentInfo.displayMediaList.length>=1}}">
+            <view class="formatted-image-row" style="height: {{picItem.rowHeight+'rpx'}}; width: {{picItem.rowWidth?picItem.rowWidth+'rpx':'100%'}}" wx:for="{{renderData.commentInfo.displayMediaList}}" wx:for-index="picItemIndex" wx:for-item="picItem" wx:key="picItemIndex">
+                <view bindtap="bindTapLocateMedia" class="media-item" data-media="{{picList}}" wx:for="{{picItem.picLists}}" wx:for-index="picIndex" wx:for-item="picList" wx:key="picIndex">
+                    <view style="margin-right: {{picList.marginRight?picList.marginRight+'rpx':'0'}}" wx:if="{{picList.type===1&&picList.isFirstVideo}}">
+                        <video-preview id="video-{{impressionDataIndex}}" media="{{picList}}" videoId="video-{{impressionDataIndex}}"></video-preview>
+                    </view>
+                    <image-loader media="{{picList}}" wx:else></image-loader>
+                </view>
+            </view>
+            <view class="hint--no-display" wx:if="{{renderData.commentInfo.notDisplayMediaCount>0}}">
+                <view class="hint--no-display-number">
+                    +{{renderData.commentInfo.notDisplayMediaCount}}
+                </view>
+            </view>
+        </view>
+        <comment-text-search content="{{renderData.commentInfo.text}}" hitInfo="{{renderData.hitInfo}}" wx:if="{{renderData.commentInfo.text&&renderData.commentInfo.text.length>0}}"></comment-text-search>
+        <view class="topic-wrapper" wx:if="{{renderData.topicTags.length>0}}">
+            <view catchtap="bindTapTag" class="topic" data-id="{{item.id}}" data-name="{{item.name}}" wx:for="{{renderData.topicTags}}" wx:key="topic+{{index}}">
+                <view class="topic-tag">#{{item.name}}</view>
+            </view>
+        </view>
+        <poi-card catchtap="onTapPoi" impressionId="{{renderData.commentId}}" isUsingRealCurrentLocation="{{renderData.isUsingRealCurrentLocation}}" poiData="{{renderData.poiInfo}}" reportData="{{renderData.reportData}}" showPoiGallery="{{renderData.commentInfo.mediaList.length===0}}"></poi-card>
+        <view catchtap="noop" class="impression-content__bottom">
+            <view catchtap="onTapImpression" class="comment-wrap">
+                <view class="comment-action" data-commentcount="{{renderData.commentInfo.subCommentCount}}" data-commentid="{{renderData.commentId}}" data-index="{{impressionIndex}}">
+                    <view class="comment-icon"></view>
+                    <view class="comment-label">{{updateCommentCount||' '}}</view>
+                </view>
+            </view>
+            <like catchlikechange="bindlikechange" commentId="{{renderData.commentId}}" data-index="{{impressionIndex}}" isLike="{{renderData.commentInfo.isLike}}" likeCount="{{renderData.commentInfo.likeCount}}" reportData="{{renderData.reportData}}"></like>
+            <share-to-wechat class="share-to-wechat-frame" impressionData="{{renderData.originComment}}" poiImage="{{renderData.poiInfo.topImageUrl}}" poiName="{{renderData.poiInfo.name}}" wx:if="{{canShare}}"></share-to-wechat>
+        </view>
+    </view>
+    <comment-panel bindhidecommmentpanel="bindhidecommmentpanel" commentCount="{{renderData.commentInfo.subCommentCount}}" impressionId="{{renderData.commentId}}" reportData="{{renderData.reportData}}" shouldAutoFocus="{{shouldAutoFocusCommentPanel}}" wx:if="{{shouldShowCommentPanel}}"></comment-panel>
+</view>

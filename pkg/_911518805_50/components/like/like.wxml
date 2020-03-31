@@ -1,0 +1,7 @@
+<view class="like-wrap">
+    <view catchtap="catchTapLike" class="like-action">
+        <view class="like-icon like-icon--liked" wx:if="{{isLike}}"></view>
+        <view class="like-icon" wx:else></view>
+    </view>
+    <view class="like-label {{isLike?'like-label--liked':''}}">{{likeCount||' '}}</view>
+</view>

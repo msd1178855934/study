@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/timeline/timeline",
+    "pages/friend_talk_about/friend_talk_about",
+    "pages/index_tag/index_tag",
+    "pages/rank_list_new/rank_list_new",
+    "pages/me/me",
+    "pages/search_index/search_index",
+    "pages/search_result/search_result",
+    "pages/mention/mention",
+    "pages/poi_detail/poi_detail",
+    "pages/impression_feed/impression_feed",
+    "pages/comment_feed/comment_feed",
+    "pages/complain_page/complain_page",
+    "pages/poi_feedback/poi_feedback",
+    "pages/app_feedback/app_feedback",
+    "pages/swipe_pic/swipe_pic",
+    "pages/poi_comment_publish/poi_comment_publish",
+    "pages/kitchen/kitchen",
+    "pages/feedback/feedback",
+    "pages/search_poi_list/search_poi_list",
+    "pages/user_profile/user_profile",
+    "pages/activity/activity",
+    "pages/select_tag_list/select_tag_list",
+    "pages/following/following",
+    "pages/fans/fans",
+    "pages/recommend_poi/recommend_poi",
+    "pages/article_webview/article_webview"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "default",
+    "navigationBarRightButton": {
+      "hide": true
+    }
+  },
+  "networkTimeout": {
+    "request": 5000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

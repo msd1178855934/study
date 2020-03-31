@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "comment-text": "/components/comment_text/comment_text",
+        "bottom-loading": "/components/bottom_loading/bottom_loading",
+        "like": "/components/like/like",
+        "user-access-permission": "/components/user_access_permission/user_access_permission",
+        "content-error": "/components/content_error/content_error"
+    },
+    "navigationBarTitleText": " "
+}

@@ -1,0 +1,20 @@
+<view catchtap="onTapImpression" class="impr" data-commentid="{{renderData.commentId}}" data-index="{{impressionDataIndex}}">
+    <view class="impr__image" wx:if="{{renderData.commentInfo.firstMedia}}">
+        <video-preview id="video-{{impressionDataIndex}}" media="{{renderData.commentInfo.firstMedia}}" videoId="video-{{impressionDataIndex}}" videoStyle="{{renderData.commentInfo.firstMedia.videoStyle}}" wx:if="{{renderData.commentInfo.firstMedia.isFirstVideo}}"></video-preview>
+        <image-loader media="{{renderData.commentInfo.firstMedia}}" wx:else></image-loader>
+    </view>
+    <view class="impr__comment" wx:if="{{renderData.commentInfo.text}}">{{renderData.commentInfo.text}}</view>
+    <view class="impr__poi">
+        <view class="impr__poi-name">{{renderData.poiInfo.name}}</view>
+        <view class="impr__poi-distance">{{renderData.poiInfo.distanceString2}}</view>
+    </view>
+    <view class="impr__bottom">
+        <view catchtap="bindtapToUserProfile" class="impr__author-wrap" data-contact="{{renderData.contact}}">
+            <image class="impr__avartar" src="{{renderData.contact.headImgUrl}}"></image>
+            <view class="impr__nick-name">{{renderData.contact.baseName}}{{renderData.contact.type===1?'(朋友)':''}}</view>
+        </view>
+        <view class="like-wrapper">
+            <like commentId="{{renderData.commentId}}" data-index="{{impressionIndex}}" isLike="{{renderData.commentInfo.isLike}}" likeCount="{{renderData.commentInfo.likeCount}}" reportData="{{renderData.reportData}}"></like>
+        </view>
+    </view>
+</view>

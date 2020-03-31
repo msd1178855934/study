@@ -1,0 +1,3 @@
+<!--miniprogram/pages/router/router.wxml-->
+<button type="default" bind:tap="user">user</button>
+<button type="default" bind:tap="school">school</button>

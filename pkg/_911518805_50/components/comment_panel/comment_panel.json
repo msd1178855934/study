@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "bottom-loading": "/components/bottom_loading/bottom_loading"
+    }
+}

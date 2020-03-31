@@ -1,0 +1,2 @@
+<text>miniprogram/pages/storage/storage.wxml</text>
+<button type="default" bind:tap="tempFile">获取临时文件路径</button>

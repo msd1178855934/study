@@ -1,0 +1,76 @@
+<view>
+    <view class="skeleton skeleton-simple" wx:if="{{loadingStyle==='simple'}}">
+        <block wx:for="{{[1]}}" wx:key="index">
+            <view class="skeleton-card">
+                <view class="skeleton-row">
+                    <view class="skeleton-row skeleton-item skeleton-input"></view>
+                </view>
+                <view class="skeleton-item skeleton-block"></view>
+            </view>
+            <view class="skeleton-card">
+                <view class="skeleton-item skeleton-image"></view>
+            </view>
+            <view class="skeleton-card">
+                <view class="skeleton-col">
+                    <block wx:for="{{[1,2,3]}}" wx:key="index">
+                        <view class="skeleton-row skeleton-item skeleton-title"></view>
+                        <view class="skeleton-row skeleton-item skeleton-title"></view>
+                        <view class="skeleton-row skeleton-item skeleton-block"></view>
+                    </block>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="skeleton" style="margin-top:0;" wx:elif="{{loadingStyle==='defaultNoMarginTop'}}">
+        <view class="skeleton-card" wx:for="{{[1]}}" wx:key="index">
+            <view class="skeleton-row">
+                <view class="skeleton-item skeleton-title"></view>
+                <view class="skeleton-item skeleton-icon"></view>
+            </view>
+            <view class="skeleton-row">
+                <view class="skeleton-item skeleton-info"></view>
+            </view>
+            <view class="skeleton-row">
+                <view class="skeleton-col">
+                    <view class="skeleton-item skeleton-avatar"></view>
+                </view>
+                <view class="skeleton-col">
+                    <view class="skeleton-item skeleton-name"></view>
+                    <view class="skeleton-item skeleton-timestamp"></view>
+                </view>
+            </view>
+            <view class="skeleton-row">
+                <view class="skeleton-item skeleton-image"></view>
+            </view>
+            <view class="skeleton-row">
+                <view class="skeleton-item skeleton-comment"></view>
+            </view>
+        </view>
+    </view>
+    <view class="skeleton" wx:else>
+        <view class="skeleton-card" wx:for="{{[1,2]}}" wx:key="index">
+            <view class="skeleton-row">
+                <view class="skeleton-item skeleton-title"></view>
+                <view class="skeleton-item skeleton-icon"></view>
+            </view>
+            <view class="skeleton-row">
+                <view class="skeleton-item skeleton-info"></view>
+            </view>
+            <view class="skeleton-row">
+                <view class="skeleton-col">
+                    <view class="skeleton-item skeleton-avatar"></view>
+                </view>
+                <view class="skeleton-col">
+                    <view class="skeleton-item skeleton-name"></view>
+                    <view class="skeleton-item skeleton-timestamp"></view>
+                </view>
+            </view>
+            <view class="skeleton-row">
+                <view class="skeleton-item skeleton-image"></view>
+            </view>
+            <view class="skeleton-row">
+                <view class="skeleton-item skeleton-comment"></view>
+            </view>
+        </view>
+    </view>
+</view>

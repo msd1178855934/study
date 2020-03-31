@@ -1,0 +1,12 @@
+{
+    "usingComponents": {
+        "bottom-loading": "/components/bottom_loading/bottom_loading",
+        "image-loader": "/components/image_loader/image_loader",
+        "dropdown-menu": "/components/dropdown_menu/dropdown_menu"
+    },
+    "navigationBarBackgroundColor": "#303030",
+    "navigationBarTitleText": "美食圈想去排行榜",
+    "backgroundColor": "#303030",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false
+}

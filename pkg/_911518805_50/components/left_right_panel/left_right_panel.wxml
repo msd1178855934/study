@@ -1,0 +1,16 @@
+<view class="mod-area-panel">
+    <view class="mod-category-panel__left">
+        <scroll-view scrollY class="mod-scroll-left">
+            <view bindtap="bindtapCategoryItem" class="mod-scroll-left__item {{index==0?'mod-scroll-left__item_first':''}} {{index==category.length-1?'mod-scroll-left__item_last':''}} {{selectedLeftId==item.id?'text-active':''}} " data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}" wx:for="{{formattedCategory.lvlOneCategory}}" wx:key="id">
+                    {{item.name}}
+                </view>
+        </scroll-view>
+    </view>
+    <view class="mod-category-panel__right">
+        <scroll-view scrollY class="mod-scroll-right">
+            <view bindtap="bindtapSubCategoryItem" class="mod-scroll-right__item {{index==subCategory.length-1?'mod-scroll-right__item_last':''}} {{index==0?'mod-scroll-right__item_first':''}} {{selectedRightId==item.id?'text-active':''}}" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}" wx:for="{{formattedCategory.lvlTwoCategoryMap[selectedLeftId]}}" wx:key="id">
+                    {{item.name}}
+                </view>
+        </scroll-view>
+    </view>
+</view>

@@ -1,0 +1,65 @@
+<view wx:if="{{language}}">
+    <g-form bind:submit="handleSelfSubmit" disabled="{{!agree}}" model="{{selfForm}}" primaryText="{{language.submit}}" rules="{{selfFormRules}}" validateType="{{validateType}}">
+        <g-wrapper title="{{language.infoBasic}}">
+            <g-input required bind:change="handleFormChange" data-form="selfForm" id="username" label="{{language.personName}}" placeholder="{{language.enterName}}" value="{{selfForm.username}}"></g-input>
+            <view class="wrapPhone">
+                <button bindgetphonenumber="getPhoneNumber" class="btn2" openType="getPhoneNumber">
+          {{language.getPhone}}
+        </button>
+                <g-input required bind:change="handleFormChange" data-form="selfForm" id="phone" label="{{language.phone}}" placeholder="{{language.enterPhone}}" type="number" value="{{selfForm.phone}}"></g-input>
+            </view>
+            <g-picker required actionText="{{language.select}}" bind:change="handleFormChange" data-form="selfForm" id="identityType" label="{{language.idType}}" placeholder="{{language.selectTypeId}}" range="{{language.cardTypeRange}}" value="{{selfForm.identityType}}"></g-picker>
+            <g-input required bind:blur="handleIdentityChange" data-form="selfForm" id="identity" label="{{language.idNumber}}" placeholder="{{language.enterId}}" type="{{identityInputType}}" value="{{selfForm.identity}}"></g-input>
+            <g-picker required actionText="{{language.select}}" bind:change="handleFormChange" data-form="selfForm" id="gender" label="{{language.sex}}" placeholder="{{language.selectGenger}}" range="{{language.sexRange}}" value="{{selfForm.gender}}"></g-picker>
+            <g-picker required actionText="{{language.select}}" bind:change="handleFormChange" data-form="selfForm" end="{{endToday}}" id="birthday" label="{{language.birthData}}" mode="date" placeholder="{{language.birthDate}}" start="{{startDay}}" value="{{selfForm.birthday}}"></g-picker>
+            <g-picker required actionText="{{language.select}}" bind:change="handleFormChange" data-form="selfForm" id="isChinese" label="{{language.nationality}}" placeholder="请选择国籍/地区" range="{{language.nationRange}}" value="{{selfForm.isChinese}}"></g-picker>
+            <g-picker required actionText="{{language.select}}" bind:change="handleFormChange" data-form="selfForm" id="domicilePlace" label="{{language.placeOfDomicile}}" placeholder="{{language.selectPlaceOfDomicile}}" range="{{language.domicilePlaceRange}}" value="{{selfForm.domicilePlace}}" wx:if="{{selfForm.isChinese==1}}"></g-picker>
+            <g-picker required actionText="{{language.select}}" bind:change="handleFormChange" data-form="selfForm" id="nativePlace" label="{{language.nativePlace}}" placeholder="{{language.selectNativePlace}}" range="{{nativePlaceRange}}" value="{{selfForm.nativePlace}}" wx:if="{{selfForm.isChinese==1||selfForm.isChinese==2}}"></g-picker>
+            <g-form-cell required actionText="{{language.select}}" bind:tap="handleOpenRegion" data-form="selfForm" id="street" label="{{language.address}}" placeholder="{{language.selectAddress}}" value="{{selfForm.street}}"></g-form-cell>
+            <g-input-map required bind:bindSelect="bindSelectData" bind:change="handleFormChange" data-form="selfForm" id="addr" label="{{language.addressDatile}}" placeholder="{{language.selectAddressDatile}}" selectText="{{language.select}}" value="{{selfForm.addr}}"></g-input-map>
+        </g-wrapper>
+        <g-wrapper title="{{language.isGuangZhou}}" titleClass="title_container" xrequired="*">
+            <g-radio-group bind:change="handleFormChange" data-form="selfForm" id="residentFlag" items="{{language.residentFlagItems}}" value="{{selfForm.residentFlag}}"></g-radio-group>
+        </g-wrapper>
+        <g-wrapper title="{{language.inGuangzhou}}" xrequired="*">
+            <g-radio-group bind:change="handleFormChange" data-form="selfForm" id="residentCondition" items="{{language.residentConditionItems}}" value="{{selfForm.residentCondition}}"></g-radio-group>
+            <g-picker actionText="{{language.select}}" bind:change="handleFormChange" data-form="selfForm" end="{{today}}" id="returnDate" label="{{language.inOUtGUangZhouDate}}" mode="date" placeholder="{{language.inOUtGUangZhouDate14}}" start="{{halfMonthAgo}}" value="{{selfForm.returnDate}}" wx:if="{{selfForm.residentCondition==3}}"></g-picker>
+            <g-picker actionText="{{language.select}}" bind:change="handleFormChange" data-form="selfForm" id="recentRegionName" label="{{language.currentLocation}}" placeholder="{{language.selectCurrentLocation}}" range="{{residentPlaceItems}}" value="{{selfForm.recentRegionName}}" wx:if="{{selfForm.residentCondition==4}}"></g-picker>
+            <g-picker actionText="{{language.select}}" bind:change="handleFormChange" data-form="selfForm" id="quasiReturnDate" label="{{language.outGuanZhou}}" mode="date" placeholder="{{language.selectDate}}" start="{{today}}" value="{{selfForm.quasiReturnDate}}" wx:if="{{selfForm.residentCondition==4}}"></g-picker>
+        </g-wrapper>
+        <g-wrapper title="{{language.monthTraveling}}" xrequired="*" wx:if="{{selfForm.residentCondition!=1}}">
+            <g-radio-group bind:change="handleFormChange" data-form="selfForm" id="travelRegionClass" items="{{language.travelRegionClassItems}}" value="{{selfForm.travelRegionClass}}"></g-radio-group>
+        </g-wrapper>
+        <g-wrapper title="{{language.Recenthistory}}">
+            <g-switch bind:change="handleSocialContact1Change" desc="{{language.RecenthistoryDesc14}}" id="socialContact1" label="{{language.Recenthistory14}}" myClass="switch-width" value="{{selfForm.socialContact1}}"></g-switch>
+            <g-picker actionText="{{language.select}}" bind:change="handleFormChange" data-form="selfForm" end="{{today}}" id="contactDateRecent" label="{{language.contactDate}}" mode="date" placeholder="{{language.selectDate14}}" start="{{halfMonthAgo}}" value="{{selfForm.contactDateRecent}}" wx:if="{{selfForm.socialContact1}}"></g-picker>
+            <g-switch bind:change="handleSocialContact2Change" desc="{{language.RecenthistoryPersonDesc}}" id="socialContact2" label="{{language.RecenthistoryPerson14}}" myClass="switch-width" value="{{selfForm.socialContact2}}"></g-switch>
+            <g-picker actionText="{{language.select}}" bind:change="handleFormChange" data-form="selfForm" end="{{today}}" id="contactDateLike" label="{{language.contactDate}}" mode="date" placeholder="{{language.selectDate14}}" start="{{halfMonthAgo}}" value="{{selfForm.contactDateLike}}" wx:if="{{selfForm.socialContact2}}"></g-picker>
+        </g-wrapper>
+        <g-wrapper title="{{language.healthStatus}}" xrequired="*">
+            <g-radio-group bind:change="handleFormChange" data-form="selfForm" id="healthState" items="{{language.healthStateItems}}" label="" value="{{selfForm.healthState}}"></g-radio-group>
+        </g-wrapper>
+        <g-wrapper title="{{language.symptomsTitle}}" xrequired="*">
+            <g-checkbox-group bind:change="handleFormChange" data-form="selfForm" id="symptoms" items="{{language.symptomItems}}" label="{{language.symptomsLable}}" value="{{selfForm.symptoms}}"></g-checkbox-group>
+            <g-textarea bind:change="handleFormChange" data-form="selfForm" disabled="{{disableDetail}}" id="symptomDscr" label="{{language.symptomDscrLable}}" placeholder="{{language.symptomDscrPlaceholder}}" value="{{selfForm.symptomDscr}}"></g-textarea>
+        </g-wrapper>
+        <g-wrapper bindtap="uploadAvatar" title="{{language.portrait}}" xrequired="*" wx:if="{{currentType=='2'}}">
+            <g-cell bindtap="uploadAvatar">
+                <view>{{language.information}}</view>
+                <view class="other-avatar" wx:if="{{!avatarFlag}}">{{language.uploadAvatar}}</view>
+                <view class="upload-complete" wx:if="{{avatarFlag}}">{{language.completed}}</view>
+            </g-cell>
+            <image class="avatarSize btn2" src="{{avatarUrl}}"></image>
+            <view class="right-arow" hidden="{{!avatarFlag}}">
+                <g-icon color="#C7C7CC" size="36" type="arrow-right"></g-icon>
+            </view>
+            <view class="btn2" hidden="{{avatarFlag}}">{{language.upload}}</view>
+        </g-wrapper>
+        <view class="agree switch-width ">
+            <g-agree bind:change="handleAgreeChange" value="{{agree}}">
+                <view>{{language.agree}}</view>
+            </g-agree>
+        </view>
+    </g-form>
+</view>
+<g-cascader bind:change="handleRegionChange" bind:close="handleRegionClose" bind:columnChange="handleRegionColumnChange" range="{{regionRange}}" visible="{{showRegionPicker}}"></g-cascader>

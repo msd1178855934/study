@@ -1,0 +1,5 @@
+<view class="error-screen">
+    <image class="error-image" src="https://res.wx.qq.com/a/fed_upload/988503ed-fe6b-4b5f-8056-4a05ac0b44bd/content_error_empty.png"></image>
+    <view class="error-text">{{text}}</view>
+    <view bindtap="onTapShowRulesDetail" class="error-text-link" style="padding-bottom:{{isIpx?ipxFtPadding:0}}rpx" wx:if="{{showLink}}">查看详情</view>
+</view>

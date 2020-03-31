@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "impression": "/components/impression/impression",
+        "bottom-loading": "/components/bottom_loading/bottom_loading"
+    },
+    "navigationBarRightButton": {
+        "hide": true,
+        "iconPath": "/images/icon-share.png"
+    }
+}

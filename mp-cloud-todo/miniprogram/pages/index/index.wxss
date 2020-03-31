@@ -1,0 +1,8 @@
+/* miniprogram/pages/index/index.wxss */
+.btn-add {
+    position: fixed;
+    z-index: 100;
+    bottom: 100rpx;
+    left: 50%;
+    margin-left: -50rpx;
+}

@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "bottom-loading": "/components/bottom_loading/bottom_loading"
+    },
+    "backgroundColor": "#f1f1f1",
+    "navigationBarTitleText": "消息",
+    "navigationBarBackgroundColor": "#f1f1f1"
+}

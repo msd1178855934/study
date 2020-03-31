@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+        "left-right-panel": "/components/left_right_panel/left_right_panel",
+        "select-panel": "/components/select_panel/select_panel",
+        "order-panel": "/components/order_panel/order_panel",
+        "bottom-loading": "/components/bottom_loading/bottom_loading",
+        "impression-search": "/components/impression_search/impression_search"
+    },
+    "backgroundColor": "#f1f1f1",
+    "component": true
+}

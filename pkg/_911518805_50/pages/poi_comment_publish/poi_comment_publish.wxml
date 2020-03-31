@@ -1,0 +1,43 @@
+<view class="action-block--fixed" style="z-index: 1000000; position: fixed; top: 0; left: 0; right: 0; padding: {{menuPositionTop}}px 0 12rpx 0">
+    <view catchtap="onTapBackButton" class="back-action">取消</view>
+    <view bindtap="postComment" class="action-post {{canSend?'':'post-btn--disable'}}">发表</view>
+</view>
+<view class="mod-comment-area" style="margin: {{menuPositionTop}}px 0 0 0">
+    <view class="poi-info-area" wx:if="{{poiId}}">
+        <image class="poi-info-area-image" mode="aspectFill" src="{{poiTopImage}}"></image>
+        <view class="poi-info-area-title">{{poiName}}</view>
+        <view class="poi-info-area-desc">{{poiDesc}}</view>
+        <view catchtap="onTapClearPoi" class="poi-info-area-clear" wx:if="{{!fromPoiDetail}}">
+            <view class="poi-info-area-clear-image"></view>
+        </view>
+    </view>
+    <view bindtap="onTapChoosePoi" class="poi-info-area" wx:else>
+        <view class="poi-info-area-choose-title">选餐厅（必选）</view>
+        <text class="poi-info-area-choose-right"></text>
+    </view>
+    <textarea bindblur="textareaBlur" bindfocus="textareaFocus" bindinput="textInput" class="mod-comment-text" focus="{{textAreaShouldFocus}}" maxlength="{{666}}" placeholder="{{textareaPlaceholderText}}" placeholderClass="mod-comment-text__placeholder" showConfirmBar="{{false}}" value="{{textareaValue}}"></textarea>
+    <view class="media-container">
+        <view class="media-item" wx:for="{{picList}}">
+            <view catchtap="tapDeleteMediaItem" class="media-remover" data-index="{{index}}">
+                <view class="media-remover-image"></view>
+            </view>
+            <image bindtap="tapImageItem" class="media-item-image" data-index="{{index}}" mode="aspectFill" src="{{item.type==0?item.filePath:item.thumbFilePath}}"></image>
+            <view bindtap="tapImageItem" data-index="{{index}}" wx:if="{{item.type===1}}">
+                <image class="play-btn" src="https://res.wx.qq.com/a/fed_upload/e6571a6e-666f-49d2-8292-7766fa530b3a/video-play.png"></image>
+            </view>
+        </view>
+        <view bindtap="chooseMedia" class="media-item" style="background: rgba(0,0,0,0.03);" wx:if="{{picList.length<9}}">
+            <image class="media-item-camera" src="https://res.wx.qq.com/a/fed_upload/39d8119d-ff4b-4589-be4f-e2e79a2bf9ca/camera.png"></image>
+        </view>
+    </view>
+    <view class="tag-container" wx:if="{{topicItemList&&topicItemList.length||selectedTopicItem.id}}">
+        <view bindtap="onTapSelectTopic" class="tag-line">
+            <view class="tag-title">参与话题</view>
+            <view class="tag-selected-item" wx:if="{{selectedTopicItem.id}}">#{{selectedTopicItem.name}}</view>
+            <text class="tag-arrow-right" wx:if="{{canNavigateToTagListView}}"></text>
+        </view>
+        <view class="tag-line tag-line-second" wx:if="{{!selectedTopicItem.id}}">
+            <view bindtap="onTapTopicItem" class="tag-item" data-index="{{topicItemIndex}}" wx:for="{{topicItemList}}" wx:for-index="topicItemIndex" wx:for-item="topicItem">#{{topicItem.name}}</view>
+        </view>
+    </view>
+</view>

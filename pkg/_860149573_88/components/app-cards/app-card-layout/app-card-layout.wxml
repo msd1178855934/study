@@ -1,0 +1,43 @@
+<view catch:tap="captureClickCard" class="default-box default-border-bottom uiexperiment">
+    <view class="card__hd wx-flex">
+        <view class="weapp__base-info wx-flex__item ellipsis-1">
+            <image catch:tap="toProfile" class="weapp__logo image-bg" hoverClass="tap-opacity" lazyLoad="{{true}}" src="{{appLogo}}"></image>
+            <text catch:tap="toProfile" class="weapp__name {{platform=='android'?'android':''}}" hoverClass="tap-opacity">{{appName}}</text>
+        </view>
+        <view catch:tap="handleClickMore" class="hd__extra-opr enlarge-tap-area">
+            <image class="svg icon-more" src="/resources/icons_outlined_more.svg"></image>
+            <image class="svg darkmode icon-more" src="/resources/darkmode/icons_outlined_more.svg"></image>
+        </view>
+    </view>
+    <slot name="body"></slot>
+    <view class="card__ft">
+        <image class="svg card__ft__left" src="/resources/icons_outlined_like_light.svg" wx:if="{{recommend_reason_type===1||likeNameString}}"></image>
+        <image class="svg darkmode card__ft__left" src="/resources/darkmode/icons_outlined_like_light.svg" wx:if="{{recommend_reason_type===1||likeNameString}}"></image>
+        <view class="card__ft__right">
+            <view class="ft__extra-opr">
+                <view catch:tap="{{cardwxs.handleClickLike}}" class="like-opr enlarge-tap-area">
+                    <view class="icon-like {{hasLike?'has-like':'not-like'}}"></view>
+                </view>
+            </view>
+            <view class="friends-info {{likeNameString?'like-name':''}}">{{recommend_reason_type===1||likeNameString?likeNameString:recommendReason}}</view>
+        </view>
+    </view>
+</view>
+<wxs module="cardwxs">
+function handleClickLike(event, ownerInstance) {
+    var instance = ownerInstance.selectComponent('.icon-like');
+    if (instance.hasClass('not-like')) {
+        instance.removeClass('not-like', 'ani-like', 'has-like', 'ani-unlike');
+        instance.addClass('ani-like');
+        instance.addClass('has-like')
+    } else {
+        instance.removeClass('has-like', 'ani-unlike', 'not-like', 'ani-like');
+        instance.addClass('ani-unlike');
+        instance.addClass('not-like')
+    };
+    ownerInstance.callMethod('handleClickLike')
+};
+module.exports = ({
+    handleClickLike: handleClickLike,
+});
+</wxs>

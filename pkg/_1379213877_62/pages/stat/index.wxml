@@ -1,0 +1,128 @@
+<view wx:if="{{language}}">
+    <view>
+        <mp-navigation-bar back="{{false}}" background="{{isShowBg?'':'white'}}" color="{{isShowBg?'white':'black'}}" title="{{language.SuiKang}}">
+            <view bind:tap="handleOpenRegion" class="header-region" slot="left" wx:if="{{userInfo.isLeader}}">{{value}}
+        <g-dropdown color="{{isShowBg?'white':'black'}}"></g-dropdown>
+            </view>
+        </mp-navigation-bar>
+    </view>
+    <view class="back-view {{isShowBg?'show':''}}">
+        <image alt="" class="back-image" src="{{language.tatleImg?language.tatleImg:'https://imgcache.gzonline.gov.cn/cos/images/banner_2020_2_12_en.png'}}"></image>
+    </view>
+    <view class="index__container {{language.class}}">
+        <block wx:if="{{!userInfo.isLeader}}">
+            <home-tips access bind:tap="openTipsModal" loopDuration="{{wllConfig.home_notice.duration}}" status="warn" text="{{language.view}}" wx:if="{{wllConfig.home_notice.is_open}}">{{language.importantNotice}}</home-tips>
+            <view bind:tap="onTapAccess" class="access-box" data-real="{{true}}" data-url="/packages/health-code/pages/report-health/index" hoverClass="access-box--hover">
+                <view class="img">
+                    <image src="/images/home/icon_jkm.png"></image>
+                </view>
+                <view class="right-content">
+                    <view class="title">{{language.mySuiKang}}</view>
+                    <view class="desc">{{language.mySuikangDesc}}</view>
+                </view>
+            </view>
+            <view bind:tap="onTapAccess" class="access-box" data-url="/pages/report/home/index?target=self" hoverClass="access-box--hover">
+                <view class="img">
+                    <image src="https://imgcache.gzonline.gov.cn/cos/main_zicha@2x_741b99ed.png"></image>
+                </view>
+                <view class="right-content">
+                    <view class="title">{{language.healthCondition}}</view>
+                    <view class="desc">{{language.healthConditionDesc}}</view>
+                </view>
+            </view>
+            <view bind:tap="onTapAccess" class="access-box" data-url="/pages/report/inform/index" hoverClass="access-box--hover" wx:if="{{isvisable}}">
+                <view class="img">
+                    <image src="https://imgcache.gzonline.gov.cn/cos/main_yiqing@2x_809251b4.png"></image>
+                </view>
+                <view class="right-content">
+                    <view class="title">{{language.reportClues}}</view>
+                    <view class="desc">{{language.reportCluesDesc}}</view>
+                </view>
+            </view>
+            <view bind:tap="onTapAccess" class="access-box" data-url="/pages/donate/index/index" hoverClass="access-box--hover" wx:if="{{false}}">
+                <view class="img">
+                    <image src="https://imgcache.gzonline.gov.cn/cos/question@2x_8ebc7f3f.png"></image>
+                </view>
+                <view class="right-content">
+                    <view class="title">{{language.DonationMaterials}}</view>
+                    <view class="desc">{{language.DonationMaterialsDesc}}</view>
+                </view>
+            </view>
+            <view bind:tap="onTapAccess" class="access-box" data-url="/packages/buy/pages/notice/index" hoverClass="access-box--hover" wx:if="{{isvisable}}">
+                <view class="img">
+                    <image src="https://imgcache.gzonline.gov.cn/cos/kouzhaoyuyue@2x_7c65b32e.png"></image>
+                </view>
+                <view class="right-content">
+                    <view class="title">{{language.reservationForMasks}}</view>
+                    <view class="desc">{{language.reservationForMasksDesc}}</view>
+                </view>
+            </view>
+            <view bind:tap="onTapAccess" class="access-box" data-url="/pages/diagnosis/index" hoverClass="access-box--hover" wx:if="{{isvisable}}">
+                <view class="img">
+                    <image src="https://imgcache.gzonline.gov.cn/cos/yizhen@2x_ca109686.png"></image>
+                </view>
+                <view class="right-content">
+                    <view class="title">{{language.SeekFreeMedical}}</view>
+                    <view class="desc">{{language.SeekFreeMedicalDesc}}</view>
+                </view>
+            </view>
+        </block>
+        <block wx:if="{{userInfo.isLeader}}">
+            <view class="content-border flex-container content-border-padding">
+                <view class="flex-item">
+                    <view class="content">{{residentCount}}</view>
+                    <view class="label">{{language.residents_number}}</view>
+                </view>
+                <view class="flex-item">
+                    <view class="content">{{communistCount}}</view>
+                    <view class="label">{{language.members_number}}</view>
+                </view>
+                <view class="flex-item">
+                    <view class="content">{{floatingCount}}</view>
+                    <view class="label">{{language.floating_population}}</view>
+                </view>
+            </view>
+            <view class="content-border content-padding">
+                <view class="content-header">
+                    <view class="flex-container justify-item">
+                        <view class="label">{{language.epidemic_situation}}</view>
+                        <view class="content-light">{{language.deadline}}{{endTime}}</view>
+                    </view>
+                    <view class="flex-container" style="padding: 25rpx 0">
+                        <view class="label">{{language.cases_today}}</view>
+                        <view class="content" style="padding-left: 20rpx; color: #4293F4">+{{todayCount}}</view>
+                    </view>
+                </view>
+                <view class="flex-container justify-item label-container">
+                    <view class="flex-item">
+                        <view class="label">{{language.confirmed_case}}</view>
+                        <view class="content" style="color: #F0422C">{{confirm}}</view>
+                    </view>
+                    <view class="flex-item">
+                        <view class="label">{{language.yisi_case}}</view>
+                        <view class="content" style="color: #FF6D3B">{{suspect}}</view>
+                    </view>
+                    <view class="flex-item">
+                        <view class="label">{{language.cure_case}}</view>
+                        <view class="content" style="color: #09BB07">{{cure}}</view>
+                    </view>
+                    <view class="flex-item">
+                        <view class="label">{{language.death_cases}}</view>
+                        <view class="content" style="color: #979797">{{dead}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="chart-line" style="{{visible?'display: none;':''}}">
+                <view class="chart-title">{{language.epidemic_trend}}</view>
+                <line class="chart-item" option="{{singleLine}}"></line>
+            </view>
+        </block>
+    </view>
+    <g-footer sponsor="{{language.guangzhouDisease}}" supportor="{{language.supportor}}"></g-footer>
+</view>
+<g-cascader bind:change="handleRegionChange" bind:close="handleRegionClose" bind:columnChange="handleRegionColumnChange" range="{{regionRange}}" visible="{{visible}}"></g-cascader>
+<my-hover fileName="{{fileName}}" pdfUrl="{{pdfUrl}}">
+    <view bind:tap="setLanguageTab" class="button-hover add_icon">
+        <image src="../../images/home/icon2.png"></image>
+    </view>
+</my-hover>

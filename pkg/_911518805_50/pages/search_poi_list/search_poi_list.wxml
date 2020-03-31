@@ -1,0 +1,52 @@
+<view class="mod-hd">
+    <view class="mod-searching" wx:if="{{isSearching}}">
+        <image class="mod-searching__image" src="https://res.wx.qq.com/a/fed_upload/988503ed-fe6b-4b5f-8056-4a05ac0b44bd/search-icon.png"></image>
+        <input bindblur="bindInputViewBlur" bindfocus="bindInputViewFocus" bindinput="bindSearchInput" class="mod-searching__input" focus="{{true}}" maxlength="10" value="{{query}}"></input>
+        <view bindtap="bindtapCancelSearch" class="mod-search-input__clear" wx:if="{{query&&query.length}}">
+            <image class="mod-search-input__clear-image" src="https://res.wx.qq.com/a/fed_upload/988503ed-fe6b-4b5f-8056-4a05ac0b44bd/search-input-clear.jpg"></image>
+        </view>
+    </view>
+    <view bindtap="bindtapSearchPlaceHolder" class="mod-search fc" wx:else>
+        <image class="mod-search__image" src="/images/search-icon.png"></image>
+        <span class="mod-search__text">搜索</span>
+    </view>
+</view>
+<view class="mod-search-list-title" wx:if="{{list4Search&&list4Search.length>0&&(!query||query.length==0)}}">附近的餐厅</view>
+<view class="mod-search-list-item-container" hoverClass="mod-hover-class" wx:for="{{list4Search}}" wx:key="unique">
+    <view bindtap="bindtapItem" class="mod-search-list-item" data-index="{{index}}">
+        <image class="mod-search-list-item__image" mode="aspectFill" src="{{item.topImage}}"></image>
+        <view class="mod-search-list-item__name">
+            <block wx:if="{{item.nameMatchPart}}">
+                <span>{{item.nameBeforeMatchPart}}</span>
+                <span class="text-active">{{item.nameMatchPart}}</span>
+                <span>{{item.nameAfterMatchPart}}</span>
+            </block>
+            <span wx:else>{{item.name}}</span>
+        </view>
+        <view class="mod-search-list-item__desc-container">
+            <view class="mod-search-list-item__poiDesc">
+                <block wx:if="{{item.poiDescMatchPart}}">
+                    <span>{{item.poiDescBeforeMatchPart}}</span>
+                    <span class="text-active">{{item.poiDescMatchPart}}</span>
+                    <span>{{item.poiDescAfterMatchPart}}</span>
+                </block>
+                <block wx:else>
+                    <span>{{item.poiDesc}}</span>
+                    <span></span>
+                </block>
+            </view>
+            <view class="mod-search-list-item__distance">{{item.distanceString}}</view>
+        </view>
+    </view>
+</view>
+<view class="mod-loading fc" wx:if="{{shouldShowBottomLoading4Search}}">
+    <image class="mod-loading__image" src="https://res.wx.qq.com/a/fed_upload/988503ed-fe6b-4b5f-8056-4a05ac0b44bd/loading.gif"></image>
+    <span class="mod-loading__text">正在加载</span>
+</view>
+<view class="mod-empty" wx:if="{{!shouldShowBottomLoading4Search&&list4Search.length==0}}">
+    <image class="mod-empty__image" src="/images/search-empty.png"></image>
+    <view class="mod-empty__text">找不到这家餐厅</view>
+</view>
+<view class="mod-choose-media-panel-frame" wx:if="{{showChooseMediaPanel}}">
+    <choose-media-panel bindonhidepanel="onHideChooseMediaPanel" bindonresult="onChooseMediaPanelResult" poiName="{{currentPoiName}}" showNoPicButton="{{true}}"></choose-media-panel>
+</view>

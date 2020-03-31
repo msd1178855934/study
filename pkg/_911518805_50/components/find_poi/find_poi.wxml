@@ -1,0 +1,31 @@
+<view class="container">
+    <view catchtouchmove="noop" class="filters-wrapper" style="top: {{filtersTop}}px;">
+        <view class="filters">
+            <view bindtap="bindtapMenuFilter" class="filter filter1">
+                <view class="filter__text">{{resultSelectedMenuCategoryName}}</view>
+                <view class="{{shouldShowMenuCategoryPanel?'filter__arrow-up':'filter__arrow-down'}}"></view>
+            </view>
+            <view bindtap="bindtapAreaFilter" class="filter filter2">
+                <view class="filter__text">{{resultSelectedAreaCategoryName}}</view>
+                <view class="{{shouldShowAreaCategoryPanel?'filter__arrow-up':'filter__arrow-down'}}"></view>
+            </view>
+            <view bindtap="bindtapOrderFilter" class="filter filter3">
+                <view class="filter__text">{{resultSelectedOrderName}}</view>
+                <view class="{{shouldShowOrderPanel?'filter__arrow-up':'filter__arrow-down'}}"></view>
+            </view>
+        </view>
+    </view>
+    <view catchtouchmove="noop" class="filters-panel" style="position:{{useAbs?'absolute':'fixed'}};top:{{useAbs?'auto':top+'px'}};left:0;">
+        <left-right-panel bindleftrightselect="bindAreaCategorySelect" category="{{areaCategory}}" class="{{shouldShowAreaCategoryPanel?'':'hide'}}"></left-right-panel>
+        <select-panel bindselect="bindMenuCategorySelect" category="{{menuCategory}}" class="{{shouldShowMenuCategoryPanel?'':'hide'}}" selectedId="{{resultSelectedMenuCategoryId}}"></select-panel>
+        <order-panel bindselect="bindOrderSelect" class="{{shouldShowOrderPanel?'':'hide'}}" options="{{orderOptions}}" selectedId="{{resultSelectedOrderId}}"></order-panel>
+    </view>
+    <view class="poi-list-wrap">
+        <block wx:for="{{poiList}}" wx:for-item="poiItem" wx:key="id">
+            <view class="{{index!==0?'poi-before':''}}"></view>
+            <poi-recommend data-index="{{index}}" poiData="{{poiItem}}" poiDataIndex="{{index}}"></poi-recommend>
+        </block>
+    </view>
+    <bottom-loading showBottomLoading="{{shouldShowBottomLoading}}"></bottom-loading>
+</view>
+<view bindtap="bindtapMask" catchtouchmove="noop" class="mod-mask {{shouldShowMask?'':'hide'}}"></view>

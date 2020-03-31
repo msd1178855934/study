@@ -1,0 +1,13 @@
+{
+    "backgroundColor": "#ededed",
+    "navigationBarTitleText": "大家在用",
+    "usingComponents": {
+        "search": "/components/search/search",
+        "friends-use-category-tab": "/components/friends-use-category-tab/friends-use-category-tab",
+        "friends-use-list-item": "/components/friends-use-list-item/friends-use-list-item",
+        "friends-use-list-item-placeholder": "/components/friends-use-list-item-placeholder/friends-use-list-item-placeholder",
+        "toggle-display-top": "/components/toggle-display-top/toggle-display-top",
+        "navigation-bar": "/weui-miniprogram/navigation-bar/navigation-bar",
+        "friends-use-epidemic-panel": "/components/friends-use-epidemic-panel/friends-use-epidemic-panel"
+    }
+}

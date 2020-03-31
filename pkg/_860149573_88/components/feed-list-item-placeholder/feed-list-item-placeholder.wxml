@@ -1,0 +1,15 @@
+<view class="default-box default-border-bottom">
+    <view class="card__hd wx-flex">
+        <view class="weapp__base-info wx-flex__item">
+            <view class="weapp__logo view-bg gray" hoverClass="tap-opacity"></view>
+            <view class="weapp__name gray"></view>
+        </view>
+        <view class="hd__extra-opr enlarge-tap-area">
+            <view class="icon-more gray"></view>
+        </view>
+    </view>
+    <view class="slot gray"></view>
+    <view class="card__ft wx-flex">
+        <view class="friends-info wx-flex__item gray"></view>
+    </view>
+</view>

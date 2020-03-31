@@ -1,0 +1,5 @@
+<view class="mod-panel">
+    <view bindtap="bindtapCategoryItem" class="mod-item {{selectedId==item.id?'text-active':''}} {{index==0&&!selectedId?'text-active':''}}" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}" data-obj="{{item.obj}}" wx:for="{{category}}" wx:key="id">
+            {{item.label||item.name}}
+        </view>
+</view>

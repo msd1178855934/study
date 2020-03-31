@@ -1,0 +1,26 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+    <view class="header">
+        <view class="quick">
+            <text class="add">+</text>
+            <input class="new-quick" value="{{ todo }}" placeholder="快速添加..." focus bind:input="inputTodo" bind:confirm="addTodo" />
+        </view>
+        <text class="new" bind:tap="createItem">添加待办</text>
+    </view>
+    <block wx:if="{{ todos.length }}">
+        <view class="todos">
+            <item wx:for="{{ todos }}" wx:key="id" bind:itemremove="onItemRemove" content="{{ item.content }}" tags="{{ item.tags }}" extra="{{ item.extra }}" finished="{{ item.finished }}" bind:tap="toggleTodo" data-index="{{ index }}"></item>
+        </view>
+        <view class="footer">
+            <text class="btn" wx:if="{{ allSetting }}" bind:tap="toggleAll">{{ allFinished ? '全部重启' : '全部完成' }}</text>
+            <text wx:if="{{ leftCount }}">{{ leftCount }}项未完成</text>
+            <text class="btn" wx:if="{{ todos.length > leftCount }}" wx:if="{{ clearSetting }}" bind:tap="clearFinished">清空所有已完成</text>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="empty">
+            <text class="title">恭喜</text>
+            <text class="content">已处理完所有待办事项</text>
+        </view>
+    </block>
+</view>

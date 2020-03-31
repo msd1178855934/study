@@ -1,0 +1,33 @@
+<view class="friends-use-list-item wx-flex thin-border-bottom" hidden="{{hidden}}" hoverClass="tap-highlight">
+    <image class="app-logo image-bg" lazyLoad="{{true}}" src="{{appLogo}}"></image>
+    <view class="app-main wx-flex__item">
+        <view class="app-main-hd ellipsis-1">
+            <text class="app-main-title ellipsis-1">{{appName}}</text>
+        </view>
+        <view class="app-main-desc ellipsis-1">{{appDesc}}</view>
+        <view class="app-main-ft wx-flex">
+            <view class="wx-flex__item wx-flex">
+                <view class="app-main-label" wx:if="{{category&&listIndex===0}}">{{category}}{{category_name_list[2]?'/'+category_name_list[2]:''}}</view>
+                <view class="app-main-label" wx:if="{{listIndex!==0&&category_name_list[2]}}">{{category_name_list[2]}}</view>
+            </view>
+            <view class="app-main-friends ellipsis-1" hidden="{{!recommendReason}}">
+        {{recommendReason}}
+      </view>
+        </view>
+        <view class="app-main-hot ellipsis-1" hidden="{{!referMsg||referMsgType===7||referMsgType===2||listIndex!==0&&!category_name_list[2]}}">
+      {{referMsg}}
+    </view>
+    </view>
+</view>
+<wxs module="filter">
+function scoreFilter(score) {
+    if (typeof score !== 'number') {
+        return ('')
+    } else {
+        return (score.toFixed(1))
+    }
+};
+module.exports = ({
+    scoreFilter: scoreFilter,
+});
+</wxs>

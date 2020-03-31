@@ -1,0 +1,11 @@
+<view class="panel">
+    <view class="panel-title">疫情服务</view>
+    <view class="panel-body">
+        <view bind:tap="goFriendsUseEpidemic" class="tab" data-anchor="{{item.group_id}}" data-group_name="{{item.group_name}}" wx:for="{{virus_group_info}}" wx:key="{{item.group_id}}">
+            <view class="tab-box {{index%2===0?'thin-border-right':''}}">
+                <image class="tab-icon" src="{{item.group_icon_url}}"></image>
+                <text class="tab-text">{{item.group_name}}</text>
+            </view>
+        </view>
+    </view>
+</view>

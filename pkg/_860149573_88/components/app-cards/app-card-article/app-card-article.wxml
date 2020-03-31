@@ -1,0 +1,44 @@
+<view class="uiexperiment2">
+    <app-card-layout appLogo="{{appLogo}}" appName="{{appName}}" bind:captureClickCard="captureClickCard" bind:handleClickLike="handleClickLike" bind:handleClickMore="handleClickMore" bind:toProfile="toProfile" class="app-card-article" hasLike="{{hasLike}}" likeCount="{{likeCount}}" recommendReason="{{recommendReason}}" recommend_reason_type="{{recommend_reason_type}}" social_like_info="{{social_like_info}}">
+        <view catch:tap="handleClickCardBody" class="card__bd" slot="body">
+            <view wx:if="{{content_image_list.length>=3}}">
+                <view class="article__title">
+                    <text class="ellipsis-2">{{contentTextObj.front}}</text>
+                </view>
+                <view class="content_image_list">
+                    <image binderror="onLoadimageError" class="article__cover image-bg" data-index="{{index}}" lazyLoad="{{true}}" mode="aspectFill" src="{{item}}" wx:if="{{index<3}}" wx:for="{{content_image_list}}" wx:key="{{item}}"></image>
+                </view>
+            </view>
+            <view class="article__content" hoverClass="tap-highlight" wx:elif="{{content_image_list.length>0}}">
+                <view class="article__title">
+                    <text class="ellipsis-2">{{contentTextObj.front}}</text>
+                </view>
+                <view class="article__cover__wrp">
+                    <image binderror="onLoadimageError" bindload="imageLoad" class="article__cover image-bg" data-index="{{0}}" lazyLoad="{{true}}" mode="aspectFill" src="{{content_image_list[0]}}" style="{{singleImageStyle}}"></image>
+                </view>
+            </view>
+            <view wx:elif="{{isVideo}}">
+                <view class="article__title">
+                    <text class="ellipsis-2">{{contentTextObj.front}}</text>
+                </view>
+                <view class="video-cover__wrp">
+                    <image binderror="onLoadimageError" class="video-cover image-bg" lazyLoad="{{true}}" mode="aspectFill" src="{{contentImg}}"></image>
+                    <view class="icon-play-wrp" hoverClass="tap-opacity" hoverStopPropagation="true">
+                        <image class="icon-play" src="/resources/play.svg"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="article__content" hoverClass="tap-highlight" wx:else>
+                <view class="article__title">
+                    <text class="ellipsis-2">{{contentTextObj.front}}</text>
+                </view>
+                <view class="article__cover__wrp">
+                    <image binderror="onLoadimageError" bindload="imageLoad" class="article__cover image-bg" lazyLoad="{{true}}" mode="aspectFill" src="{{contentImg}}" style="{{singleImageStyle}}"></image>
+                    <view class="icon-play-wrp" hoverClass="tap-opacity" hoverStopPropagation="true" wx:if="{{isVideo}}">
+                        <image class="icon-play" src="/resources/play.svg"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </app-card-layout>
+</view>

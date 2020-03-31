@@ -1,0 +1,136 @@
+<block wx:if="{{hasLaunch||isCacheHit&&!shouldShowUserAccessPermission}}">
+    <view class="impression-page" wx:if="{{impressionState>=0&&poi.title1.length>0}}">
+        <view class="impression-header-section">
+            <block wx:if="{{swiperData.length}}">
+                <view class="action-block action-block--overlay">
+                    <view bindtap="onTapShareButton" class="share-action share-capsule" wx:if="{{canShare}}">
+                        <text class="share-icon"></text>
+                        <text class="share-label">分享</text>
+                    </view>
+                    <view bindtap="onTapMoreButton" class="more-action" data-id="{{poi.id}}">
+                        <text class="icon-more"></text>
+                    </view>
+                </view>
+                <swiper bindchange="bindSwiperChange" class="media-swiper" current="{{swiperCurrent}}" style="height:{{currentHeight}}rpx;">
+                    <swiper-item wx:for="{{swiperData}}" wx:key="{{index}}">
+                        <view class="image-wrapper" id="{{'swiperItem'+index}}" wx:if="{{item.type==0}}">
+                            <image class="swiper-image" src="{{item.thumbUrl}}" style="height:{{item.height}}rpx; width: {{item.width}}rpx;"></image>
+                            <image bindload="bindMediaKVReport" class="swiper-image" data-src="{{item.url}}" src="{{item.url}}" style="height:{{item.height}}rpx; width: {{item.width}}rpx;"></image>
+                        </view>
+                        <video class="swiper-image" data-media="{{item}}" enableProgressGesture="{{false}}" id="{{'swiperItem'+index}}" loop="{{true}}" poster="{{item.thumbUrl}}" showCenterPlayBtn="{{true}}" showFullscreenBtn="{{true}}" showPlayBtn="{{true}}" showProgress="{{false}}" src="{{item.url}}" style="height:{{item.height}}rpx; width: {{item.width}}rpx;" wx:elif="{{item.type==1}}"></video>
+                    </swiper-item>
+                </swiper>
+                <view class="swiper-footer" wx:if="{{swiperData.length>=2}}">
+                    <view class="swiper-dot-wrapper">
+                        <block wx:for="{{swiperData}}" wx:key="{{index}}">
+                            <view class="swiper-dot {{current===index?'swiper-dot--active':''}} ps-before"></view>
+                            <view class="swiper-dot {{current===index?'swiper-dot--active':''}}"></view>
+                        </block>
+                    </view>
+                </view>
+            </block>
+            <view class="action-block" wx:else>
+                <view bindtap="onTapShareButton" class="share-action share-capsule" wx:if="{{canShare}}">
+                    <text class="share-icon"></text>
+                    <text class="share-label">分享</text>
+                </view>
+                <view bindtap="onTapMoreButton" class="more-action" data-id="{{poi.id}}">
+                    <text class="icon-more"></text>
+                </view>
+            </view>
+            <view class="main-comment">
+                <view class="impression-header">
+                    <view catchtap="bindtapToUserProfile" class="author impression-author" data-contact="{{authorContact}}">
+                        <image class="author-avatar" mode="aspectFill" src="{{headImgUrl}}"></image>
+                        <view class="author-nickname">{{authorContact.baseName}}</view>
+                        <view class="author-extra-label" wx:if="{{authorContact.nameExtra}}">
+                                {{authorContact.nameExtra}}
+                            </view>
+                    </view>
+                </view>
+                <text class="comment-content" decode="{{true}}">{{topCommentContent}}</text>
+                <view class="topic-wrapper" wx:if="{{topicTags.length>0}}">
+                    <view catchtap="bindTapTag" class="topic" data-id="{{item.id}}" data-name="{{item.name}}" wx:for="{{topicTags}}" wx:key="topic+{{index}}">
+                        <view class="topic-tag">#{{item.name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view catchtap="bindtapPoi" class="poi-card" data-id="{{poi.id}}">
+                <image class="card-image" mode="aspectFill" src="{{poi.thumbUrl}}" wx:if="{{poi.thumbUrl}}"></image>
+                <view class="card-content">
+                    <view class="card-text">
+                        <view class="text-title">{{poi.title1}}</view>
+                        <text class="text-tag">{{poi.title2}}</text>
+                    </view>
+                </view>
+                <view catchtap="onTapMarkButton" class="card-action" data-id="{{poi.id}}" data-poi="{{poi}}">
+                    <view class="poi-mark poi-isMarked" wx:if="{{poi.isMark}}">
+                        <text class="mark-label">已想去</text>
+                    </view>
+                    <view class="poi-mark poi-notMarked" wx:else>
+                        <view class="icon-marked"></view>
+                        <text class="mark-label">想去</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="comment-section" wx:if="{{totalCommentCount>0}}">
+            <view class="ps-before"></view>
+            <view class="comment-stats">
+                <view style="min-width: 120rpx">
+                    <like catchlikechange="bindlikechange" commentId="{{impressionId}}" isLike="{{isLike}}" likeCount="{{likeCount}}" reportData="{{reportDataForLike}}"></like>
+                </view>
+                <view class="comment-wrap" style="margin-left: 16rpx">
+                    <view class="comment-icon"></view>
+                    <view class="comment-count" wx:if="{{mainComments}}">
+                                {{totalCommentCount>0?totalCommentCount:''}}
+                            </view>
+                </view>
+            </view>
+            <view class="comment-box" wx:for="{{mainComments}}" wx:for-index="mainCommentIndex" wx:for-item="mainComment" wx:key="id">
+                <view class="comment-col ps-1st-type">
+                    <image catchtap="bindtapToUserProfile" class="comment-avatar" data-contact="{{mainComment.contact}}" src="{{mainComment.headImgUrl}}"></image>
+                </view>
+                <view class="comment-col ps-2nd-type">
+                    <view catchtap="bindtapMainComment" data-id="{{mainComment.id}}" data-is-self="{{mainComment.isSelf}}" data-main-index="{{mainCommentIndex}}" data-nickname="{{mainComment.nickName}}" style="padding-top: 5rpx">
+                        <view class="comment-row">
+                            <text class="comment-author">{{mainComment.nickName}}</text>
+                            <text class="comment-time">{{mainComment.timeStr}}</text>
+                        </view>
+                        <text class="comment-content" decode="{{true}}" style="padding-top: 6rpx; padding-bottom: 10rpx">{{mainComment.commentContent}}</text>
+                    </view>
+                    <view class="reply-box" wx:if="{{mainComment.replyComments.length>0}}">
+                        <view catchtap="bindtapReplyComment" class="reply" data-is-self="{{replyComment.isSelf}}" data-main-index="{{mainCommentIndex}}" data-nickname="{{replyComment.nickName}}" data-referid="{{mainComment.id}}" data-reply-index="{{replyCommentIndex}}" data-replyid="{{replyComment.id}}" wx:for="{{mainComment.replyComments}}" wx:for-index="replyCommentIndex" wx:for-item="replyComment" wx:key="id">
+                            <text class="reply-name" decode="true" space="nbsp" wx:if="{{replyComment.repliedNickName}}">{{replyComment.nickName}}&nbsp;回复&nbsp;{{replyComment.repliedNickName}}</text>
+                            <text class="reply-name" wx:else>{{replyComment.nickName}}</text>
+                            <text class="reply-content" decode="true">: {{replyComment.commentContent}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <bottom-loading showBottomLoading="{{continueFlag}}" wx:if="{{showBottomLoadingView}}"></bottom-loading>
+        </view>
+        <view class="comment-section" wx:else>
+            <view class="ps-before"></view>
+            <view class="comment-stats">
+                <view style="min-width: 120rpx">
+                    <like catchlikechange="bindlikechange" commentId="{{impressionId}}" isLike="{{isLike}}" likeCount="{{likeCount}}" reportData="{{reportDataForLike}}"></like>
+                </view>
+                <view class="comment-wrap" style="margin-left: 16rpx">
+                    <view class="comment-icon"></view>
+                    <view class="comment-count">
+                                {{totalCommentCount>0?totalCommentCount:''}}
+                            </view>
+                </view>
+            </view>
+            <view class="comment-empty">留下第一条评论吧</view>
+        </view>
+        <view class="input-keyboard-mask" wx:if="{{showInputKeyboardMask}}"></view>
+        <view class="textarea-wrap" style="padding-bottom:{{isIpx?ipxDangerBottom:30}}rpx">
+            <input bindblur="bindBlur" bindconfirm="bindConfirm" bindfocus="bindFocus" bindinput="bindInput" class="textarea" confirmHold="{{true}}" confirmType="send" cursorSpacing="{{cursorSpacing}}" focus="{{focus}}" maxlength="140" placeholder="{{placeholder}}" showConfirmBar="{{true}}" value="{{inputValue}}"></input>
+        </view>
+        <view style="height:100rpx"></view>
+    </view>
+    <content-error showLink="{{impressionState==-2}}" text="{{contentErrorText}}" wx:if="{{impressionState<0}}"></content-error>
+</block>
+<user-access-permission wx:else></user-access-permission>

@@ -1,0 +1,21 @@
+<navigation-bar back="{{true}}" isIndex="{{true}}" title="小程序">
+    <view bind:tap="toSearch" class="btn-topright" hoverClass="tap-dark" slot="right" wx:if="{{platform=='android'}}">
+        <image class="svg icon-topright" src="/resources/search-black.svg"></image>
+        <image class="svg darkmode icon-topright " src="/resources/darkmode/search-black.svg"></image>
+    </view>
+    <view bind:tap="clickMoreMenu" class="btn-topright btn-more" hoverClass="{{platform==='android'?'tap-dark':'ios-opacity'}}" slot="right" wx:if="{{showOrderEntrance}}">
+        <view class="reddot" wx:if="{{showMoreMenuRedDot}}"></view>
+        <image class="svg icon-topright icon-more" src="/resources/icons_outlined_more.svg"></image>
+        <image class="svg darkmode icon-topright icon-more" src="/resources/darkmode/icons_outlined_more.svg"></image>
+    </view>
+</navigation-bar>
+<view bind:touchcancel="onPageScroll" bind:touchend="onPageScroll" class="main">
+    <search eventId="{{searchEventId}}" hidden="{{platform!=='ios'}}" id="search" scene="{{201}}"></search>
+    <related-app-list-card id="related-app-list-card"></related-app-list-card>
+    <view class="split-line">
+        <view class="line"></view>
+        <view bind:longpress="toggleDebug" class="text">动态</view>
+        <view class="line"></view>
+    </view>
+    <feed-list bind:handleRetry="handleRetry" id="feed-list"></feed-list>
+</view>

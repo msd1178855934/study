@@ -1,0 +1,12 @@
+{
+    "usingComponents": {
+        "bottom-loading": "/components/bottom_loading/bottom_loading",
+        "impression-me": "/components/impression_me/impression_me",
+        "dropdown-menu": "/components/dropdown_menu/dropdown_menu"
+    },
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "我",
+    "backgroundColor": "#ffffff",
+    "enablePullDownRefresh": true,
+    "navigationStyle": "custom"
+}

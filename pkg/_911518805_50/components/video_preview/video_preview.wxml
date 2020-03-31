@@ -1,0 +1,12 @@
+<view class="video-preview" style="height: {{videoHeight}}rpx; width: {{videoWidth}}rpx;">
+    <video loop autoplay="{{isAutoplay}}" bindtimeupdate="bindVideoUpdate" controls="{{false}}" enableProgressGesture="{{false}}" id="{{videoId}}" muted="{{true}}" objectFit="cover" showFullscreenBtn="{{false}}" showPlayBtn="{{false}}" showProgress="{{false}}" src="{{videoUrl}}" style="position: abosulte; left: 0; top: 0; height: {{videoHeight}}rpx; width: {{videoWidth}}rpx;  {{videoStyle}}; z-index: 999;" wx:if="{{videoUrl||isVideoShow}}"></video>
+    <view class="poster-mask" hidden="{{isVideoShow}}" style="height: {{videoHeight}}rpx; width: {{videoWidth}}rpx;">
+        <view class="poster-bg" style="background-image: url({{posterSrc}}); z-index: 2000; padding-bottom: {{videoHeight/videoWidth*100}}%; {{videoStyle}} "></view>
+        <view class="play-mask" hidden="{{!isPlayShow}}" style="z-index: 3000;">
+            <image class="play-btn" src="https://res.wx.qq.com/a/fed_upload/e6571a6e-666f-49d2-8292-7766fa530b3a/video-play.png"></image>
+        </view>
+        <view class="loading-mask" hidden="{{isPlayShow}}" style="z-index: 3000;">
+            <view class="video-loading"></view>
+        </view>
+    </view>
+</view>

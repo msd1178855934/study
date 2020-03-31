@@ -1,0 +1,28 @@
+<view bind:tap="clickClose" class="page">
+    <view animation="{{animationData}}" bindtransitionend="transitionend" catch:tap="noop" class="feiyan-app-action-sheet">
+        <view class="head">
+            <image bind:tap="clickClose" class="close svg" src="/resources/icons_outlined_close.svg"></image>
+            <image bind:tap="clickClose" class="close svg darkmode" src="/resources/darkmode/icons_outlined_close.svg"></image>
+            <view class="title-wrp">
+                <view class="title">请选择小程序</view>
+                <view class="tip">有多个小程序正在提供疫情相关的数据服务</view>
+            </view>
+        </view>
+        <view class="app-list thin-border-top">
+            <view bind:tap="go" class="app-item {{index===appList.length-1?'thin-border-bottom':''}}" data-index="{{index}}" wx:for="{{appList}}" wx:key="{{index}}">
+                <image class="app-icon image-bg" src="{{item.appIcon}}"></image>
+                <view class="app-info {{index!==appList.length-1?'thin-border-bottom':''}}">
+                    <text class="app-name">{{item.appName}}</text>
+                </view>
+            </view>
+        </view>
+        <view bind:tap="toggleCheckbox" class="footer">
+            <block wx:if="{{!hasCheck}}">
+                <image class="checkbox svg" src="/resources/checkbox.svg"></image>
+                <image class="checkbox svg darkmode" src="/resources/darkmode/checkbox.svg"></image>
+            </block>
+            <image class="checkbox" src="/resources/checkbox-checked.svg" wx:else></image>
+            <text class="tip">记住我的选择，下次不再询问</text>
+        </view>
+    </view>
+</view>

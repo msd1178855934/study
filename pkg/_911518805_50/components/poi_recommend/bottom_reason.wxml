@@ -1,0 +1,52 @@
+<template name="bottom-reason">
+    <block wx:if="{{type==='displayFriendsImpression'}}">
+        <view class="poi__line"></view>
+        <view catchtap="onTapToImpressionFeed" class="poi__bottom poi__bottom--impression">
+            <view class="poi__mark-text">{{data.label}}</view>
+            <view class="poi__impression">
+                <view class="poi__impression-name">{{data.impression.name}}:</view>
+                <view class="poi__impression-content">{{data.impression.comment}}</view>
+            </view>
+        </view>
+    </block>
+    <block wx:elif="{{type==='displayFriendsPublishAvatar'}}">
+        <view class="poi__line"></view>
+        <view class="poi__bottom">
+            <view class="poi__avatar-list">
+                <image class="poi__avatar" mode="aspectFill" src="{{contact.headImgUrl}}" wx:for="{{data.avatars}}" wx:for-item="contact" wx:key="index"></image>
+            </view>
+            <view class="poi__mark-text">{{data.label}}</view>
+        </view>
+    </block>
+    <block wx:elif="{{type==='displayFriendsMarkAvatar'}}">
+        <view class="poi__line"></view>
+        <view class="poi__bottom">
+            <view class="poi__avatar-list">
+                <image class="poi__avatar" mode="aspectFill" src="{{contact.headImgUrl}}" wx:for="{{data.avatars}}" wx:for-item="contact" wx:key="index"></image>
+            </view>
+            <view class="poi__mark-text">{{data.label}}</view>
+        </view>
+    </block>
+    <block wx:elif="{{type==='displayRankList'}}">
+        <view class="poi__line"></view>
+        <view catchtap="onTapToRankList" class="poi__bottom" data-index="{{index}}">
+            <view class="poi__reason-path">{{data.rankInfo}}</view>
+            <view class="icon-arrow-right"></view>
+        </view>
+    </block>
+    <block wx:elif="{{type==='displayRankListFromResponseReason'}}">
+        <view class="poi__line"></view>
+        <view wx:if="{{data.isClickable}}">
+            <view catchtap="onTapToRankList" class="poi__bottom" data-index="{{index}}">
+                <view class="poi__reason-path">{{data.label}}</view>
+                <view class="icon-arrow-right"></view>
+            </view>
+        </view>
+        <view wx:else>
+            <view class="poi__bottom">
+                <view class="poi__reason-path">{{data.label}}</view>
+            </view>
+        </view>
+    </block>
+    <view class="poi__bottom-placeholder" wx:else></view>
+</template>

@@ -1,0 +1,37 @@
+<view class="container">
+    <view class="mod-filter {{shouldShowFilterFixed?'mod-filter_clicked':''}}">
+        <view bindtap="bindtapMenuFilter" class="mod-filter-item">
+            <view class="mod-filter-item__text {{shouldShowMenuCategoryPanel?'text-active':''}}">
+								{{resultSelectedMenuCategoryName}}
+						</view>
+            <image class="mod-filter-item__arrow" src="{{shouldShowMenuCategoryPanel?'/images/filter-arrow-up.jpg':'/images/filter-arrow-down.png'}}"></image>
+        </view>
+        <view bindtap="bindtapAreaFilter" class="mod-filter-item">
+            <view class="mod-filter-item__text {{shouldShowAreaCategoryPanel?'text-active':''}}">
+								{{resultSelectedAreaCategoryName}}
+						</view>
+            <image class="mod-filter-item__arrow" src="{{shouldShowAreaCategoryPanel?'/images/filter-arrow-up.jpg':'/images/filter-arrow-down.png'}}"></image>
+        </view>
+        <view bindtap="bindtapOrderFilter" class="mod-filter-item">
+            <view class="mod-filter-item__text {{shouldShowOrderPanel?'text-active':''}}">
+								{{resultSelectedOrderName}}
+						</view>
+            <image class="mod-filter-item__arrow" src="{{shouldShowOrderPanel?'/images/filter-arrow-up.jpg':'/images/filter-arrow-down.png'}}"></image>
+        </view>
+    </view>
+    <view catchtouchmove="noop" class="mod-panel">
+        <left-right-panel bindleftrightselect="bindAreaCategorySelect" category="{{areaCategory}}" class="{{shouldShowAreaCategoryPanel?'':'hide'}}" selectedLeftId="" selectedRightId=""></left-right-panel>
+        <select-panel bindselect="bindMenuCategorySelect" category="{{menuCategory}}" class="{{shouldShowMenuCategoryPanel?'':'hide'}}" selectedId="{{resultSelectedMenuCategoryId}}"></select-panel>
+        <select-panel bindselect="bindPriceCategorySelect" category="{{priceCategory}}" class="{{shouldShowPriceCategoryPanel?'':'hide'}}"></select-panel>
+        <order-panel bindselect="bindOrderSelect" class="{{shouldShowOrderPanel?'':'hide'}}" options="{{orderOptions}}" selectedId="{{resultSelectedOrderId}}"></order-panel>
+    </view>
+    <view class="mod-panel-placehodler"></view>
+    <view class="poi-list-wrap">
+        <block wx:for="{{poiList}}" wx:for-item="poiItem" wx:key="id">
+            <view class="poi-before"></view>
+            <poi_recommend data-index="{{index}}" poiData="{{poiItem}}" poiDataIndex="{{index}}"></poi_recommend>
+        </block>
+    </view>
+    <bottom-loading showBottomLoading="{{shouldShowBottomLoading}}"></bottom-loading>
+</view>
+<view bindtap="bindtapMask" catchtouchmove="noop" class="mod-mask {{shouldShowMask?'':'hide'}}"></view>

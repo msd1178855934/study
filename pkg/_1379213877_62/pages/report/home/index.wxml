@@ -1,0 +1,17 @@
+<mp-navigation-bar animated="{{animated}}" back="{{true}}" background="{{background}}" color="{{color}}" loading="{{loading}}" show="{{show}}" title="{{language.suiKang}}"></mp-navigation-bar>
+<view wx:if="{{visible}}">
+    <g-banner current="{{language.current}}" src="{{language.shangbaoImg}}"></g-banner>
+    <g-wrapper>
+        <g-cell bind:tap="onTapAccess" data-url="/pages/report/index/index?type=1" desc="{{language.myHealthInfoDesc}}" label="{{language.myHealthInfo}}">
+            <view class="img" slot="prepend">
+                <image src="https://imgcache.gzonline.gov.cn/cos/images/zc%402x.png"></image>
+            </view>
+        </g-cell>
+        <g-cell bind:tap="onTapAccess" data-url="/pages/report/index/index?type=2" desc="{{language.theHealthDesc}}" label="{{language.theHealth}}">
+            <view class="img" slot="prepend">
+                <image src="https://imgcache.gzonline.gov.cn/cos/images/tr%402x.png"></image>
+            </view>
+        </g-cell>
+    </g-wrapper>
+    <g-footer fixed sponsor="{{language.guangzhouDisease}}" supportor="{{language.supportor}}"></g-footer>
+</view>

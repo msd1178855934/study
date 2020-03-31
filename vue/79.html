@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue-router/3.0.7/vue-router.min.js"></script>
+    <title>Document</title>
+    <style>
+    
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: red;
+            height: 20vh;
+        }
+
+        .container {
+            display: flex;
+            height: 80vh;
+        }
+
+        h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+
+        .left {
+            flex: 2;
+            background: green;
+        }
+
+        .right {
+            flex: 8;
+            background: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <router-view></router-view>
+        <div class="container">
+            <router-view name="left"></router-view>
+            <router-view name="right"></router-view>
+        </div>
+
+    </div>
+
+    <script>
+
+        var header = {
+            template: '<h1 class="header">header component</h1>'
+        }
+
+        var left = {
+            template: '<h1 class="left">left component</h1>'
+        }
+
+        var right = {
+            template: '<h1 class="right">right component</h1>'
+        }
+
+        const router = new VueRouter({
+            routes: [
+                {path: '/', components: {
+                    default: header,
+                    left: left,
+                    right: right
+                }}
+            ]
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+
+            },
+            router: router
+        })
+    </script>
+</body>
+</html>

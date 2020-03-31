@@ -1,0 +1,172 @@
+<view class="container">
+    <view class="page-body">
+        <view class="page-section">
+            <view class="weui-cells__title">版本号</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <input bindinput="bindinputClientVersion" class="weui-input" value="{{clientVersion}}"></input>
+                </view>
+            </view>
+        </view>
+        <view class="page-section">
+            <view class="weui-cells__title">数据来源选择</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">当前选择</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <picker bindchange="bindPickerChange" range="{{sourceArray}}" value="{{sourceArrayIndex}}">
+                            <view class="weui-input">{{sourceArray[sourceArrayIndex]}}</view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="page-section">
+            <view class="weui-cells__title">currentTime</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <input bindinput="bindinputCurrentTime" class="weui-input" value="{{currentTime}}"></input>
+                </view>
+            </view>
+        </view>
+        <view class="page-section">
+            <view class="weui-cells__title">priceLevel</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <input bindinput="bindinputPriceLevel" class="weui-input" value="{{priceLevel}}"></input>
+                </view>
+            </view>
+        </view>
+        <view class="page-section">
+            <view class="weui-cells__title">从相册选图片视频时的位置范围 (米)</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <input bindblur="bindblurPoiLocationRadius" bindconfirm="bindconfirmPoiLocationRadius" class="weui-input" value="{{poiLocationRadius}}"></input>
+                </view>
+            </view>
+        </view>
+        <view class="page-section">
+            <view class="weui-cells__title">拍摄视频、从相册选视频时的时长 (秒)</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <input bindblur="bindblurMediaMaxDuration" bindconfirm="bindconfirmMediaMaxDuration" class="weui-input" value="{{mediaMaxDuration}}"></input>
+                </view>
+            </view>
+        </view>
+        <view class="page-section">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_switch">
+                    <view class="weui-cell__bd">是否打开商户侧小程序入口</view>
+                    <view class="weui-cell__ft">
+                        <switch bindchange="bindChangeShouldShowStoreAppEntry" checked="{{shouldShowStoreAppEntry?'true':''}}"></switch>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="page-section">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_switch">
+                    <view class="weui-cell__bd">是否显示首页推荐头像</view>
+                    <view class="weui-cell__ft">
+                        <switch bindchange="bindchangeShouldShowHeadImage" checked="{{shouldShowHeadImage?'true':''}}"></switch>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="page-section">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_switch">
+                    <view class="weui-cell__bd">
+                        <span style="font-weight:bold">修改后重启微信/小程序开发IDE生效</span>
+                        是否连接到测试环境
+                    </view>
+                    <view class="weui-cell__ft">
+                        <switch bindchange="bindchangeShouldUseGreyServer" checked="{{shouldUseGreyServer?'true':''}}"></switch>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="page-section">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_switch">
+                    <view class="weui-cell__bd">修改定位位置(修改后重启微信)</view>
+                    <view class="weui-cell__ft">
+                        <switch bindchange="bindchangeShouldLocateDefault" checked="{{shouldLocateDefault?'true':''}}"></switch>
+                    </view>
+                </view>
+                <view class="input-location-cell" wx:if="{{shouldLocateDefault}}">
+                    <view class="inner-cell">
+                        <span>latitude</span>
+                        <input bindblur="defaultLocationLatitudeFinishInput" bindconfirm="defaultLocationLatitudeFinishInput" class="inner-cell-input" value="{{defaultLocationLatitude}}"></input>
+                    </view>
+                    <view class="inner-cell">
+                        <span>longitude</span>
+                        <input bindblur="defaultLocationLongitudeFinishInput" bindconfirm="defaultLocationLongitudeFinishInput" class="inner-cell-input" value="{{defaultLocationLongitude}}"></input>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="page-section">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_switch">
+                    <view class="weui-cell__bd">调试</view>
+                    <view class="weui-cell__ft">
+                        <span>
+                            <button bindtap="bindtapDebug" size="mini" style="display:inline-block;margin-right:10rpx;" type="primary">
+                                调试
+                            </button>
+                        </span>
+                        <span>
+                            <button bindtap="bindtapUnDebug" size="mini" style="display:inline-block" type="primary">
+                                关闭调试
+                            </button>
+                        </span>
+                        <span>
+                            <button bindtap="bindtapOpenSetting" size="mini" style="display:inline-block" type="primary">
+                                打开设置
+                            </button>
+                        </span>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="page-section" wx:if="{{hasLabSwitch}}">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_switch">
+                    <view class="weui-cell__bd">修改“插件”开关值</view>
+                    <view class="weui-cell__ft">
+                        <switch bindchange="bindchangeLabSwitchValue" checked="{{labSwitchValue}}"></switch>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="page-section">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_switch">
+                    <view class="weui-cell__bd">修改Poi位置信息</view>
+                    <view class="weui-cell__ft">
+                        <switch bindchange="bindchangeShouldUsePoiTestInfo" checked="{{shouldUsePoiTestInfo?'true':''}}"></switch>
+                    </view>
+                </view>
+                <view class="input-location-cell" wx:if="{{shouldUsePoiTestInfo}}">
+                    <view class="inner-cell">
+                        <span>PoiLatitude</span>
+                        <input bindblur="testPoiLocationLatitudeFinishInput" bindconfirm="testPoiLocationLatitudeFinishInput" class="inner-cell-input" value="{{testPoiLocationLatitude}}"></input>
+                    </view>
+                    <view class="inner-cell">
+                        <span>PoiLongitude</span>
+                        <input bindblur="testPoiLocationLongitudeFinishInput" bindconfirm="testPoiLocationLongitudeFinishInput" class="inner-cell-input" value="{{testPoiLocationLongitude}}"></input>
+                    </view>
+                </view>
+                <view class="input-location-cell" wx:if="{{shouldUsePoiTestInfo}}">
+                    <view class="inner-cell">
+                        <span>PoiName</span>
+                        <input bindblur="testPoiNameFinishInput" bindconfirm="testPoiNameFinishInput" class="inner-cell-input" placeholder="请输入…" value="{{testPoiName}}"></input>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

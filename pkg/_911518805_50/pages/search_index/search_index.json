@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "search-result": "/pages/search_result/search_result",
+        "search-result-impression": "/pages/search_result_impression/search_result_impression"
+    },
+    "navigationBarBackgroundColor": "#f1f1f1",
+    "backgroundColor": "#f1f1f1",
+    "navigationBarTitleText": "搜索"
+}

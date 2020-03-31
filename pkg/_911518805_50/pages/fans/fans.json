@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "bottom-loading": "/components/bottom_loading/bottom_loading"
+    },
+    "backgroundColor": "#fff",
+    "navigationBarTitleText": "我的粉丝",
+    "navigationBarBackgroundColor": "#fff"
+}

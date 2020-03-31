@@ -1,0 +1,14 @@
+{
+    "usingComponents": {
+        "left-right-panel": "/components/left_right_panel/left_right_panel",
+        "select-panel": "/components/select_panel/select_panel",
+        "order-panel": "/components/order_panel/order_panel",
+        "choose-media-panel": "/components/choose_media_panel/choose_media_panel",
+        "subcategory-panel": "/components/subcategory_panel/subcategory_panel",
+        "bottom-loading": "/components/bottom_loading/bottom_loading",
+        "poi_recommend": "/components/poi_recommend/poi_recommend"
+    },
+    "backgroundColor": "#f4f4f4",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "朋友提到的餐厅"
+}

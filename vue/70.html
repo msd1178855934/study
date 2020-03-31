@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue-router/3.0.7/vue-router.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <a href="#/login">login</a>
+        <a href="#/register">register</a>
+        <router-view></router-view>
+    </div>
+
+    <script>
+        var login = {
+            template: "<div>login component</div>"
+        }
+
+        var register = {
+            template: "<div>register component</div>"
+        }
+
+        const router = new VueRouter({
+            routes: [
+                {path: "/login", component: login},
+                {path: "/register", component: register},
+            ]
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+
+            },
+            router: router
+        })
+    </script>
+</body>
+</html>

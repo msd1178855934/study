@@ -1,0 +1,17 @@
+<!--pages/setting/setting.wxml-->
+<view class="container">
+    <view class="title">待办</view>
+    <view class="section">
+        <text>允许全选：</text>
+        <switch checked="{{ allSetting }}" data-setting="allSetting" bind:change="toggleSetting" />
+    </view>
+    <view class="section">
+        <text>允许清空：</text>
+        <switch checked="{{ clearSetting }}" data-setting="clearSetting" bind:change="toggleSetting" />
+    </view>
+    <view class="title">历史</view>
+    <view class="section">
+        <text>显示时间：</text>
+        <switch checked="{{ timeSetting }}" data-setting="timeSetting" bind:change="toggleSetting" />
+    </view>
+</view>

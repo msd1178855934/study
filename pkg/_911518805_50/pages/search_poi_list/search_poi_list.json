@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "choose-media-panel": "/components/choose_media_panel/choose_media_panel"
+    },
+    "navigationBarTitleText": "选择餐厅",
+    "backgroundColor": "#ffffff"
+}

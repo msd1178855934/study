@@ -1,0 +1,49 @@
+<view class="impression-refer-block">
+    <view class="refer-header">
+        <image catchtap="bindtapToUserProfile" class="refer-avatar" data-contact="{{contact}}" src="{{contact.headImgUrl}}" wx:for="{{renderData.markContacts}}" wx:for-item="contact" wx:key="index"></image>
+        <view class="refer-title" wx:if="{{renderData.friendMarkCount}}">
+            {{renderData.friendMarkCount}}个朋友想去这里
+        </view>
+    </view>
+    <view catchtap="onTapImpression" class="impression-content" data-commentid="{{renderData.commentId}}" data-index="{{impressionDataIndex}}">
+        <view catchtap="onTapPoi" class="poi-card">
+            <view class="card-content">
+                <image class="card-image" mode="aspectFill" src="{{renderData.poiInfo.topImageUrl}}"></image>
+                <view class="card-text">
+                    <view class="text-row">
+                        <view class="text-title">{{renderData.poiInfo.name}}</view>
+                        <view class="text-tip" wx:if="{{renderData.visitCount>0}}">
+                            朋友印象{{renderData.visitCount}}
+                        </view>
+                    </view>
+                    <view class="text-tag">{{renderData.poiInfo.info}}</view>
+                </view>
+            </view>
+            <view catchtap="onTapMarkTimelineItem" class="card-action poi-mark-action">
+                <view class="poi-mark poi-isMarked" wx:if="{{renderData.isMark}}">
+                    <view class="mark-label">已想去</view>
+                </view>
+                <view class="poi-mark poi-notMarked" wx:else>
+                    <view class="icon-marked"></view>
+                    <view class="mark-label">想去</view>
+                </view>
+            </view>
+        </view>
+        <view catchtap="onTapImpression" class="formatted-image-layout" wx:if="{{renderData.commentInfo.displayMediaList.length>=1}}">
+            <view class="formatted-image-row" style="height: {{picItem.maxHeight}}rpx;" wx:for="{{renderData.commentInfo.displayMediaList}}" wx:for-index="picItemIndex" wx:for-item="picItem" wx:key="picItemIndex">
+                <view bindtap="bindTapLocateMedia" class="media-item" data-media="{{picList}}" wx:for="{{picItem.picLists}}" wx:for-index="picIndex" wx:for-item="picList" wx:key="picIndex">
+                    <view style="margin-bottom: {{picList.marginBottom?picList.marginBottom+'rpx':'0'}}; margin-right: {{picList.marginRight?picList.marginRight+'rpx':'0'}}" wx:if="{{picList.type===1&&picList.isFirstVideo}}">
+                        <video-preview id="video-{{impressionDataIndex}}" media="{{picList}}" videoId="video-{{impressionDataIndex}}"></video-preview>
+                    </view>
+                    <image-loader media="{{picList}}" wx:else></image-loader>
+                </view>
+            </view>
+            <view class="hint--no-display" wx:if="{{renderData.commentInfo.notDisplayMediaCount>0}}">
+                <view class="hint--no-display-number">
+                    +{{renderData.commentInfo.notDisplayMediaCount}}
+                </view>
+            </view>
+        </view>
+        <comment-text content="{{renderData.commentInfo.text}}" externalClass="{{'comment-text--forward'}}" wx:if="{{renderData.commentInfo.text&&renderData.commentInfo.text.length>0}}"></comment-text>
+    </view>
+</view>

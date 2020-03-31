@@ -1,0 +1,9 @@
+<!--pages/add/add.wxml-->
+<form bind:submit="onSubmit" report-submit="{{ true }}">
+    <input name="title"></input>
+    <image src="{{ image }}" wx:if="{{ image }}"></image>
+    <button bind:tap="selectImage">选择图片</button>
+    <button bind:tap="selectLocation">选择位置</button>
+    <view><picker value="{{ time }}" catch:change="bindTimeChange" mode="time">选择时间:{{ time }}</picker></view>
+    <button form-type="submit">提交</button>
+</form>

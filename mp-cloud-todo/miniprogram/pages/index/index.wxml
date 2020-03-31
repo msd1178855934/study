@@ -1,0 +1,13 @@
+<!--miniprogram/pages/index/index.wxml-->
+<view class="btn-add">
+    <navigator url="../add/add">
+        <van-icon name="add" size="100rpx" />
+    </navigator>
+</view>
+<van-cell-group>
+    <block wx:for="{{ tasks }}" wx:key="index">
+        <navigator url="../detail/detail?id={{ item._id }}">
+            <van-cell title="{{item.title}}" />
+        </navigator>
+    </block>
+</van-cell-group>

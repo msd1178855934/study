@@ -1,0 +1,161 @@
+module.exports = {
+    enumPageName: {
+        FRIEND_TIMELINE: 1,
+        INDEX: 2,
+        INDEX_TAG: 3,
+        NEAR_POI: 4,
+        SEARCH: 5,
+        POI_DETAIL: 6,
+        IMPRESSION: 7,
+        ME: 8,
+        MENTION: 9,
+        COMMENT_PUBLISH: 10,
+        RECOMMEND_LIST: 11,
+        SEARCH_POI_LIST: 12,
+        SEARCH_POI_LIST_RESULT: 13,
+        RECOMMEND_TIMELINE: 16,
+        FRIEND_TIMELINE_EMPTY: 17,
+        POI_DETAIL_SECOND: 18,
+        TIMELINE: 19,
+        TIMELINE_ALL: 20,
+        RANK_LIST: 21,
+        HOT_TOPIC: 25,
+        USER_PROFILE: 26,
+        ACTIVITY: 27,
+        FOLLOWING: 28,
+        FANS: 29,
+        FRIEND_TALK_ABOUT: 30,
+        RECOMMEND_POI: 31
+    },
+    enumPoiTagAction: {
+        TAG_EXPOSED: 1,
+        TAG_CLIKED: 2,
+        POI_EXPOSED: 3,
+        POI_CLICKED: 4,
+        POI_MARKED: 5,
+        CLICK_REASON: 6
+    },
+    enumPoiSearchType: {
+        INPUT: 1,
+        TAG: 2,
+        HISTORY: 3,
+        FRIEND: 4,
+        SELF: 5
+    },
+    enumSceneType: {
+        FRIEND_TIMELINE: 1,
+        POI_DETAIL: 2,
+        POI_DETAIL_SECOND: 3,
+        ME: 4,
+        MENTION: 5,
+        RECOMMEND_TIMELINE: 6,
+        FRIEND_TIMELINE_EMPTY: 7,
+        TIMELINE: 8,
+        TIMELINE_RECOMMEND: 9,
+        SEARCH_IMPRESSION_RESULT: 10,
+        RANK_LIST_MARK: 11,
+        RANK_LIST_ALL: 12,
+        RANK_LIST_CATEGORY: 13,
+        FOLLOW_TIMELINE: 14,
+        FIND_POI: 15
+    },
+    enumShareType: {
+        POI: 1,
+        IMPRESSION: 2,
+        HOT_TOPIC: 3,
+        ACTIVITY_TOPIC: 4
+    },
+    enumShareResult: {
+        API_SUCCESS: 1,
+        API_CANCEL: 2,
+        API_FAILED: 3,
+        FORBID_HIGH: 4,
+        FORBID_LOW: 5
+    },
+    enumImpressionContentType: {
+        TEXT_ONLY: 1,
+        TEXT_IMAGE: 2,
+        TEXT_VIDEO: 3,
+        TEXT_IMAGE_VIDEO: 4
+    },
+    enumPageState: {
+        OK: 1,
+        DELETED: 2,
+        IMPRESSION_INVALID: 3,
+        IMPRESSION_INVALID2: 4,
+        UNKNOWN: 99
+    },
+    enumFeedAction: {
+        FEED_CLIKED_IMPRESSION: 0,
+        FEED_EXPOSED: 1,
+        FEED_CLIKED_POI: 2,
+        FEED_CLIKED_RECOMMEND: 3,
+        FEED_CLIKED_TAG: 4,
+        FEED_CLICKED_SHOW_ALL: 5,
+        FEED_CLICKED_FOLD_ALL: 6
+    },
+    enumFeedImpressionType: {
+        OTHER: 0,
+        FRIEND: 1,
+        MARKED: 2,
+        RECOMMENDED: 3,
+        NEARBY: 4,
+        STRANGER: 5
+    },
+    enumIndexTopRegionAction: {
+        HOT_TOPIC_EXPOSED: 1,
+        SEARCH_CLIKED: 2,
+        HOT_TOPIC_CLICKED: 3,
+        NEARBY_POI_CLICKED: 4,
+        RANK_LIST_CLICKED: 5,
+        TAB_FRIEND_CLICKED: 6,
+        TAB_RECOMMEND_CLICKED: 7,
+        ACTIVITY_SHOW_RULES: 8,
+        TAB_FRIEND_CLICKED_RED: 9,
+        TAB_FRIEND_EXPOSED_RED: 10,
+        TOPIC_EXPOSED: 11,
+        TOPIC_CLICKED: 12,
+        FRIEND_TALK_ABOUT_EXPOSED: 13,
+        FRIEND_TALK_ABOUT_CLICKED: 14,
+        TAB_FIND_CLICKED: 15,
+        TAB_FR_CLICKED_RED: 16,
+        TAB_FR_CLICKED: 17,
+        TAB_FR_EXPOSED_RED: 18,
+        RECOMMEND_POI_CLICK: 19,
+        TAB_FIND_FRIEND_TALK_ABOUT_EXPOSED: 20,
+        TAB_FIND_FRIEND_TALK_ABOUT_CLICKED: 21
+    },
+    enumPoiDetailClickScene: {
+        MORE_FEEDBACK: 1,
+        MORE_CANCEL: 2,
+        TOP_IMAGE: 3,
+        LOCATION: 4,
+        PHONE_SUCCESS: 5,
+        PHONE_CANCEL: 6,
+        MORE_FRIEND_IMPRESSIONS: 7,
+        MORE__STRANGER_IMPRESSIONS: 8,
+        TAG: 9,
+        ARTICLE: 10,
+        RANK: 11,
+        WECATERING_SUCCESS: 12,
+        WECATERING_FAIL: 13
+    },
+    enumProfilePageClickScene: {
+        IMPRESSION_TAB: 1,
+        MARK_TAB: 2,
+        MORE_ADVICE: 3,
+        MORE_RULES: 4,
+        MORE_CANCEL: 5,
+        HEADIMG: 6,
+        MENTION: 7
+    },
+    enumPoiUgcLabelScene: {
+        RANK_LABEL: 1,
+        IMPRESSION_COUNT_LABEL: 2,
+        MARK_COUNT_LABEL: 3,
+        OTHER: 4,
+        ERROR_BUSINESS_STATUS: 5,
+        FRIEND_IMPRESSION_SHOWN: 6,
+        NEAR_POI: 7
+    }
+};

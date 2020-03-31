@@ -1,0 +1,11 @@
+<mp-navigation-bar animated="{{animated}}" back="{{true}}" background="{{background}}" color="{{color}}" extClass="ext-class" loading="{{loading}}" show="{{show}}" title="{{title}}"></mp-navigation-bar>
+<view wx:for="{{languagesText}}" wx:for-item="value" wx:key="index">
+    <g-wrapper>
+        <g-cell bind:tap="setLanguageTab" data-index="{{index}}" label="{{value}}">
+            <view slot="prepend" wx:if="{{langIndex==index}}">
+                <image class="mine__cell-image" src="/images/home/icon_language_select.png"></image>
+            </view>
+            <view slot="append"></view>
+        </g-cell>
+    </g-wrapper>
+</view>

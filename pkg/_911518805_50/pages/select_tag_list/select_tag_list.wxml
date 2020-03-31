@@ -1,0 +1,13 @@
+<view class="tag-item-container" hoverClass="mod-hover-class">
+    <view bindtap="onTapClearTopic" class="tag-item">
+        <view class="tag-item-clear-image"></view>
+        <view class="tag-item-title">不参与任何话题</view>
+    </view>
+</view>
+<view class="tag-item-container" hoverClass="mod-hover-class" wx:for="{{topicItemList}}" wx:key="id">
+    <view bindtap="onTapTopicItem" class="tag-item" data-index="{{index}}">
+        <view class="tag-item-image"></view>
+        <view class="tag-item-title">{{item.name}}</view>
+        <view class="tag-item-desc" wx:if="{{item.visitCount}}">{{item.visitCount}}人感兴趣</view>
+    </view>
+</view>

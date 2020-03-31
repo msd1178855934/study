@@ -1,0 +1,5 @@
+<view class="comment-text {{externalClass}}">
+    <text class="comment-content" decode="{{false}}" id="content">{{shouldShowEllipse?contentClipped:content}}</text>
+    <view catchtap="bindtapShowAll" class="comment-button" wx:if="{{shouldShowButton}}">{{shouldShowEllipse?'全文':'收起'}}
+    </view>
+</view>

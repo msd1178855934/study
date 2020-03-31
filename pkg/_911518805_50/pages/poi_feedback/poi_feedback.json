@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "navigationBarBackgroundColor": "#f1f1f1",
+    "backgroundColor": "#f1f1f1",
+    "navigationBarTitleText": "餐厅信息纠错",
+    "usingComponents": {}
+}

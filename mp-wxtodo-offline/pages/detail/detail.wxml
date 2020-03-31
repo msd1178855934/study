@@ -1,0 +1,21 @@
+<!-- pages/detail/detail.wxml -->
+<view class="container">
+    <view class="section">
+        <input placeholder="待办内容..." bind:input="inputContent" auto-focus />
+    </view>
+    <view class="tags" wx:if="{{ tags.length }}">
+        <view class="tag" wx:for="{{ tags }}" wx:key="index">
+            <text class="txt">{{ item }}</text>
+            <icon class="remove" type="clear" size="16" data-index="{{ index }}" bind:tap="removeTag"></icon>
+        </view>
+    </view>
+    <view class="section">
+        <input placeholder="添加标签..." value="{{ tag }}" bind:confirm="addTag" wx:if="{{ tags.length < 3 }}" />
+        <input value="最多添加3个标签" disabled wx:if="{{ tag.length >= 3 }}" />
+    </view>
+    <view class="section">
+        <text>备注：</text>
+        <textarea bind:input="inputExtra" auto-height></textarea>
+    </view>
+    <button type="primary" bind:tap="create">创建</button>
+</view>

@@ -1,0 +1,19 @@
+$i:6;
+@for $i from 1 to 10 {
+    border-#{$i} {
+        width: #{$i}px;
+    }
+}
+
+$value:1px solid;
+.border {
+   border: $value;
+}
+
+@mixin common() {
+    border: 1px solid #ffffff;
+}
+
+.border {
+    @include common();
+}

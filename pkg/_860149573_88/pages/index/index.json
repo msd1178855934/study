@@ -1,0 +1,10 @@
+{
+    "backgroundColor": "#ededed",
+    "usingComponents": {
+        "search": "/components/search/search",
+        "related-app-list-card": "/components/related-app-list-card/related-app-list-card",
+        "feed-list": "/components/feed-list/feed-list",
+        "navigation-bar": "/weui-miniprogram/navigation-bar/navigation-bar"
+    },
+    "onReachBottomDistance": 100
+}

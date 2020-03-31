@@ -1,0 +1,5 @@
+<view bindtap="toSearch" class="search {{extraClass}}" wx:if="{{!hidden}}">
+    <image class="svg icon" src="../../resources/search.svg"></image>
+    <image class="svg darkmode icon" src="../../resources/darkmode/search.svg"></image>
+    <view class="text">{{searchText}}</view>
+</view>

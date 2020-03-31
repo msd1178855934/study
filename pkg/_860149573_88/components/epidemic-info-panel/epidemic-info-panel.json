@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "feiyan-app-action-sheet": "/components/feiyan-app-action-sheet/feiyan-app-action-sheet"
+    }
+}

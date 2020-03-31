@@ -1,0 +1,158 @@
+<import src="./tpl_waterfall.wxml"></import>
+<view class="nav-wrapper js-nav-wrapper" style="padding-top:{{menuPositionTop}}px">
+    <view class="nav">
+        <view catchtap="onTapBackButton" class="nav__back">
+            <view class="nav__back-image"></view>
+        </view>
+        <view class="nav__tabs">
+            <view catchtap="onTapTitleTabItem" class="tab" data-index="{{0}}" style="order: {{mainTab==1?'2':'1'}};">
+                <view class="tab__text">找餐厅</view>
+                <view class="tab__bottom" wx:if="{{currentTitleTab===0}}"></view>
+            </view>
+            <view catchtap="onTapTitleTabItem" class="tab" data-index="{{1}}" style="order: {{mainTab==1?'1':'2'}};">
+                <view class="tab__text">美食圈</view>
+                <view class="tab__bottom" wx:if="{{currentTitleTab===1}}"></view>
+            </view>
+        </view>
+        <view catchtap="bindTapToMePage" class="nav__me">
+            <image class="nav__me-image" mode="aspectFit" src="https://res.wx.qq.com/a/fed_upload/3eec42ab-22d6-40a0-b674-ac21126643b6/me.png"></image>
+        </view>
+    </view>
+</view>
+<view id="titleTab0" style="background: #f4f4f4; min-height: {{visibleTitleTabContentHeight}}px; {{currentTitleTab===0?isChangingTitleTab?'overflow: hidden; height: '+visibleTitleTabContentHeight+'px;':'':'display: none'}}">
+    <view catchtap="bindtapIndexSearch" class="search-wrapper js-search-wrapper">
+        <view class="search">
+            <image class="search__icon" src="/images/search-icon.png"></image>
+            <view class="search__text">搜索餐厅、商圈、菜系</view>
+        </view>
+    </view>
+    <view class="mod-timeline-top-entry-container js-top-entry">
+        <view class="mod-timeline-top-entry-container ps-after"></view>
+        <view class="mod-timeline-top-entry">
+            <view bindtap="onTapRecommendPoi" class="mod-timeline-top-entry-item">
+                <image class="mod-timeline-top-entry-item-icon" src="https://res.wx.qq.com/a/fed_upload/aa7c1510-774a-44b7-b9ec-f03c862f97ca/nearby.png"></image>
+                <view class="mod-timeline-top-entry-item-title">今天吃什么</view>
+            </view>
+            <view bindtap="onTapFriendTalkAbout" class="mod-timeline-top-entry-item" wx:if="{{friendTalkAboutList&&friendTalkAboutListLen>=5}}">
+                <image class="mod-timeline-top-entry-item-icon" src="https://res.wx.qq.com/a/fed_upload/01259b34-ef0f-4d5a-9d22-be4ffd775c8b/friend_talk_about.png"></image>
+                <view class="mod-timeline-top-entry-item-title">朋友提到的餐厅</view>
+            </view>
+            <view bindtap="onTapRankList" class="mod-timeline-top-entry-item">
+                <image class="mod-timeline-top-entry-item-icon" src="https://res.wx.qq.com/a/fed_upload/aa7c1510-774a-44b7-b9ec-f03c862f97ca/rank.png"></image>
+                <view class="mod-timeline-top-entry-item-title">想去排行榜</view>
+            </view>
+        </view>
+        <view class="mod-timeline-top-entry-container ps-after"></view>
+    </view>
+    <find-poi class="js-find-poi" id="findPoi" props="{{findPoiProps}}" wx:if="{{findPoiProps.filtersTop}}"></find-poi>
+    <view catchtap="onTapPost" class="post">
+        <view class="post-icon"></view>
+        <view class="post-label">发表</view>
+    </view>
+</view>
+<view id="titleTab1" style="background: #f4f4f4; min-height: {{visibleTitleTabContentHeight}}px; {{currentTitleTab===1?isChangingTitleTab?'overflow: hidden; height: '+visibleTitleTabContentHeight+'px;':'':'display: none'}}">
+    <view class="tab-header-wrapper" style="top: {{isChangingTitleTab?0:titleTabHeight}}px">
+        <view class="tab-header">
+            <view catchtap="onTapTabItem" class="tab-header__item tab-header__item-1" data-index="{{1}}">
+                <view class="tab-header__border-bottom" wx:if="{{1==currentTab}}"></view>
+                <div class="tab-header__item-text {{1==currentTab?'tab-header__item-text_selected':''}}">推荐</div>
+            </view>
+            <view catchtap="onTapTabItem" class="tab-header__item tab-header__item-2 {{0==currentTab?'tab-header__item_selected':''}}" data-index="{{0}}">
+                <view class="tab-header__border-bottom" wx:if="{{0==currentTab}}"></view>
+                <div class="tab-header__item-text {{0==currentTab?'tab-header__item-text_selected':''}}">朋友</div>
+            </view>
+        </view>
+    </view>
+    <view id="tab1" style="background: #f4f4f4; min-height: {{scrollViewHeight}}px; {{currentTab===1?isChangingTab?'overflow: hidden; height: '+scrollViewHeight+'px;':'':'display: none'}}">
+        <view>
+            <view bindtap="bindtapToMention" class="new-count" wx:if="{{unreadMentionCount>0}}">
+                <view class="new-count__text">{{unreadMentionCount}}条新消息</view>
+            </view>
+            <view class="mod-timeline-top-entry-container" wx:if="{{payRecommendPoiInfoList&&payRecommendPoiInfoList.length}}">
+                <scroll-view class="mod-timeline-pay-recommend-poi-scroll" scrollX="{{true}}" wx:if="{{payRecommendPoiInfoList.length>1}}">
+                    <block wx:for="{{payRecommendPoiInfoList}}" wx:for-index="payRecommendPoiIndex" wx:for-item="payRecommendPoiItem" wx:key="id">
+                        <view class="mod-timeline-pay-recommend-poi-scroll-separator" wx:if="{{payRecommendPoiIndex==0}}"></view>
+                        <view bindtap="onTapPayRecommendPoi" class="mod-timeline-pay-recommend-poi-scroll-item" data-index="{{payRecommendPoiIndex}}">
+                            <image class="mod-timeline-pay-recommend-poi-item-edit-image" mode="aspectFit" src="/images/pay-recommend-poi-edit.png"></image>
+                            <view catchtap="onTapDeletePayRecommendPoi" class="mod-timeline-pay-recommend-poi-item-delete" data-index="{{payRecommendPoiIndex}}">
+                                <image class="mod-timeline-pay-recommend-poi-item-delete-image" mode="aspectFit" src="/images/pay-recommend-poi-close.png"></image>
+                            </view>
+                            <view class="mod-timeline-pay-recommend-poi-item-title1-container">
+                                <view class="mod-timeline-pay-recommend-poi-item-title1">写推荐理由</view>
+                                <view class="mod-timeline-pay-recommend-poi-item-title1-redDot"></view>
+                            </view>
+                            <text class="mod-timeline-pay-recommend-poi-item-title2">{{'为什么推荐 '+payRecommendPoiItem.name}}</text>
+                        </view>
+                        <view class="mod-timeline-pay-recommend-poi-scroll-separator"></view>
+                    </block>
+                </scroll-view>
+                <view class="mod-timeline-pay-recommend-poi-single-container" wx:else>
+                    <view bindtap="onTapPayRecommendPoi" class="mod-timeline-pay-recommend-poi-single-item" data-index="{{0}}">
+                        <image class="mod-timeline-pay-recommend-poi-item-edit-image" mode="aspectFit" src="/images/pay-recommend-poi-edit.png"></image>
+                        <view catchtap="onTapDeletePayRecommendPoi" class="mod-timeline-pay-recommend-poi-item-delete" data-index="{{0}}">
+                            <image class="mod-timeline-pay-recommend-poi-item-delete-image" mode="aspectFit" src="/images/pay-recommend-poi-close.png"></image>
+                        </view>
+                        <view class="mod-timeline-pay-recommend-poi-item-title1-container">
+                            <view class="mod-timeline-pay-recommend-poi-item-title1">写推荐理由</view>
+                            <view class="mod-timeline-pay-recommend-poi-item-title1-redDot"></view>
+                        </view>
+                        <text class="mod-timeline-pay-recommend-poi-item-title2">{{'为什么推荐 '+payRecommendPoiInfoList[0].name}}</text>
+                    </view>
+                </view>
+                <view class="mod-timeline-top-entry-container ps-after"></view>
+            </view>
+        </view>
+        <template is="waterfall" data="{{waterfallCol1:waterfallCol1,waterfallCol2:waterfallCol2}}"></template>
+        <bottom-loading id="loading" showBottomLoading="{{shouldShowBottomLoadingRecommend}}"></bottom-loading>
+    </view>
+    <view id="tab0" style="background: white; {{currentTab===0?isChangingTab?'overflow: hidden; height: '+scrollViewHeight+'px;':'':'display: none'}}">
+        <view class="new-friend-impr-hint {{shouldHideBar?'animation-fadeOut':''}}" style="top: {{titleTabHeight}}px;" wx:if="{{shouldShowNewFriendImprBar}}">
+                {{unreadImpressionCount}}条新朋友印象
+            </view>
+        <view bindtap="bindtapToMention" class="new-count" wx:if="{{unreadMentionCount>0}}">
+            <view class="new-count__text">{{unreadMentionCount}}条新消息</view>
+        </view>
+        <view catchtap="toFriendTalkAbout" class="friend-talk-about" wx:if="{{friendTalkAboutList&&friendTalkAboutListLen>=5}}">
+            <view class="friend-talk-about__inner">
+                <view class="friend-talk-about__title">
+                    <view class="friend-talk-about__text">朋友提到的餐厅</view>
+                    <image class="friend-talk-about__arrow"></image>
+                </view>
+                <view class="fta-poi-item-list">
+                    <view class="fta-poi-item" data-id="{{item.id}}" wx:for="{{friendTalkAboutList}}" wx:key="id">
+                        <image class="fta-poi-item__image" mode="aspectFill" src="{{item.thumbUrl}}"></image>
+                        <view class="fta-poi-item__name">{{item.name}}</view>
+                        <view class="fta-poi-item__desc" wx:if="{{item.ugc.visitCount>=item.ugc.markCount&&item.ugc.visitCount!=0}}">{{item.ugc.visitCount}}个朋友去过</view>
+                        <view class="fta-poi-item__desc" wx:elif="{{item.ugc.markCount>0}}">{{item.ugc.markCount}}个朋友想去</view>
+                        <view class="fta-poi-item__desc" wx:else></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <block wx:if="{{impressionData.unqiue}}" wx:for="{{impressionDataList}}" wx:for-item="impressionData" wx:key="unqiue">
+            <block wx:if="{{impressionData.markInfo}}">
+                <view class="impression-cell {{index!==0?'ps-before':''}}"></view>
+                <impression-mark class="impression-cell js-intersection-impression" data-index="{{index}}" impressionData="{{impressionData}}" impressionDataIndex="{{index}}"></impression-mark>
+            </block>
+            <block wx:else>
+                <view class="impression-cell {{index!==0?'ps-before':''}}"></view>
+                <impression class="impression-cell js-intersection-impression" data-index="{{index}}" impressionData="{{impressionData}}" impressionDataIndex="{{index}}"></impression>
+            </block>
+        </block>
+        <block wx:if="{{isFriendTimelineInited&&!impressionDataList.length}}">
+            <block wx:if="{{shouldShowNormalPostButton}}"></block>
+            <view class="timeline-empty" wx:else>
+                <view class="timeline-empty__text">给朋友推荐一家餐厅</view>
+                <view catchtap="onTapPost" class="post timeline_empty__post selector-timeline-empty-post">
+                    <view class="post-icon"></view>
+                    <view class="post-label">发表</view>
+                </view>
+            </view>
+        </block>
+        <bottom-loading id="loading" showBottomLoading="{{shouldShowBottomLoadingFriend}}"></bottom-loading>
+    </view>
+    <view catchtap="onTapPost" class="post" wx:if="{{impressionDataList.length||!impressionDataList.length&&shouldShowNormalPostButton}}">
+        <view class="post-icon"></view>
+        <view class="post-label">发表</view>
+    </view>
+</view>

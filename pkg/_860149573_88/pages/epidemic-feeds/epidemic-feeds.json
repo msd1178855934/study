@@ -1,0 +1,8 @@
+{
+    "backgroundColor": "#ededed",
+    "navigationBarTitleText": "疫情热门信息",
+    "usingComponents": {
+        "navigation-bar": "/weui-miniprogram/navigation-bar/navigation-bar",
+        "hot-feed-card": "/components/hot-feed-card/hot-feed-card"
+    }
+}

@@ -1,0 +1,8 @@
+<view style="height:{{imgHeight}}rpx; width:{{imgWidth}}rpx; margin-bottom:{{imgMarginBottom}}rpx; margin-right: {{imgMarginRight}}rpx; position: relative">
+    <image bindload="bindHighResImageLoad" class="image-item image-placeholder" mode="{{imgMode}}" src="{{highResSrc}}" style="height:{{imgHeight}}rpx; width:{{imgWidth}}rpx;" wx:if="{{switchHighRes}}"></image>
+    <image bindload="bindImageLoad" class="image-item image-placeholder" lazyLoad="{{lazyLoad}}" mode="{{imgMode}}" src="{{posterSrc||imgSrc}}" style="height:{{imgHeight}}rpx; width:{{imgWidth}}rpx;" wx:if="{{!showOnlyHighRes}}">
+        <view class="play-mask" wx:if="{{imgType===1}}">
+            <image class="play-btn" src="https://res.wx.qq.com/a/fed_upload/e6571a6e-666f-49d2-8292-7766fa530b3a/video-play.png"></image>
+        </view>
+    </image>
+</view>

@@ -1,0 +1,22 @@
+<view class="container" wx:if="{{showImg}}">
+    <view class="cropper-wrap">
+        <movable-area class="cropper-exhibition cropper-srcroll-wrap" scaleArea="{{true}}" style="width:{{movableareaWidth}}px;height:{{movableareaHeight}}px;top:{{scrollTop}}px;left:{{scrollLeft}}px;">
+            <movable-view catchchange="onChange" catchscale="onScale" class="movableview" direction="all" outOfBounds="{{true}}" scale="{{true}}" scaleMax="2" scaleMin="1" scaleValue="{{scale}}" style="width:{{imgWidth}}px;height:{{imgHeight}}px;" x="{{imgLeft}}" y="{{imgTop}}">
+                <image class="cropper-pic" friction="100" src="{{imageSrc}}" style="width:{{imgWidth}}px;height:{{imgHeight}}px;"></image>
+            </movable-view>
+            <view class="line line-left" style="top:{{scrollTop}}px;"></view>
+            <view class="line line-top" style="top:{{scrollTop-1}}px;"></view>
+            <view class="line line-right" style="top:{{scrollTop}}px;"></view>
+            <view class="line line-bottom" style="top:{{lineBottomTop-1}}px;"></view>
+            <view class="box border-top-left"></view>
+            <view class="box border-top-right"></view>
+            <view class="box border-bottom-left"></view>
+            <view class="box border-bottom-right"></view>
+        </movable-area>
+        <view class="cropper-btn-wrap">
+            <button bindtap="chooseImg" class="cropper-btn"> 取消 </button>
+            <button bindtap="creatImage" class="cropper-btn"> 确定 </button>
+        </view>
+        <canvas canvasId="canvasCropper" class="cropper-canvas" style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;"></canvas>
+    </view>
+</view>

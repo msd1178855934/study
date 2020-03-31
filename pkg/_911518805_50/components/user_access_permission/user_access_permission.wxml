@@ -1,0 +1,29 @@
+<view class="screen" wx:if="{{showError}}">
+    <image class="error-image" src="https://res.wx.qq.com/a/fed_upload/988503ed-fe6b-4b5f-8056-4a05ac0b44bd/content_error_empty.png"></image>
+    <view class="error-text">内容获取失败</view>
+    <view class="bottom-area" style="padding-bottom:{{isIpx?ipxFtPadding:0}}rpx">
+        <view catchtap="onTapRetryStartButton" class="confirm-tip-button">重试</view>
+    </view>
+</view>
+<view class="screen" wx:elif="{{showFirstLaunchTip||showNotAllowedRegionTip}}">
+    <image class="first-launch-image" mode="aspectFit" src="https://res.wx.qq.com/a/fed_upload/e6571a6e-666f-49d2-8292-7766fa530b3a/user_first_launch_tip.png"></image>
+    <view class="first-launch-tip" wx:if="{{showFirstLaunchTip}}">
+        <view class="ps-before"></view>在这里，你可以通过“发印象”分享餐厅，你的印象可以被所有人看到。</view>
+    <view class="first-launch-tip" wx:if="{{showNotAllowedRegionTip&&showFirstLaunchTip}}">
+        <view class="ps-before"></view>目前仅支持查看广州地区的餐厅。</view>
+    <view class="error-text" wx:if="{{showNotAllowedRegionTip&&!showFirstLaunchTip}}">目前仅支持查看广州地区的餐厅</view>
+    <view class="first-launch-tip" wx:if="{{showFirstLaunchTip}}">
+        <view class="ps-before"></view>我们将根据你的地理位置信息给你推荐餐厅。你发表的内容将在平台中帮助大家更好地了解餐厅。</view>
+    <view class="bottom-area" style="padding-bottom:{{isIpx?ipxFtPadding:0}}rpx">
+        <view catchtap="onTapConfirmTipButton" class="confirm-tip-button">我知道了</view>
+        <view catchtap="onTapRulesDetail" class="bottom-tip" wx:if="{{showFirstLaunchTip}}">平台规范</view>
+    </view>
+</view>
+<view class="screen" wx:elif="{{showContent}}">
+    <image class="first-launch-image" mode="aspectFit" src="https://res.wx.qq.com/a/fed_upload/e6571a6e-666f-49d2-8292-7766fa530b3a/user_first_launch_tip.png"></image>
+    <view class="error-text">{{tip}}</view>
+    <view class="bottom-area" style="padding-bottom:{{isIpx?ipxFtPadding:0}}rpx" wx:if="{{buttonType==1}}">
+        <view bindtap="onTapOpen" class="confirm-tip-button">开启“附近的餐厅”</view>
+    </view>
+</view>
+<view class="screen fc" wx:else></view>

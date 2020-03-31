@@ -1,0 +1,6 @@
+<!--pages/detail/detail.wxml-->
+<van-cell-group>
+    <van-cell title="{{todo.title}}" value="{{todo.status}}" />
+    <van-cell wx:if="{{todo.location}}" icon="location" title="位置" value="{{todo.location.name}}" bind:click="viewLocation" />
+</van-cell-group>
+<image wx:if="{{todo.image}}" src="{{todo.image}}"></image>

@@ -1,0 +1,6 @@
+<view class="comment-text {{externalClass}}">
+    <view class="comment-content">
+        <text class="{{matchItem.isMatched?'matched':''}}" wx:for="{{shouldShowAll?matchArr:matchedArrClipped}}" wx:for-index="matchItemIndex" wx:for-item="matchItem">{{matchItem.subContent}}</text>
+    </view>
+    <view catchtap="bindtapToggleAll" class="comment-button" wx:if="{{shouldShowAllButton}}">{{shouldShowAll?'收起':'全文'}}</view>
+</view>

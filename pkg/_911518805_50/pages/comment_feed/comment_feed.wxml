@@ -1,0 +1,7 @@
+<view class="container">
+    <block wx:if="{{impressionData.unqiue}}" wx:for="{{impressionList}}" wx:for-item="impressionData" wx:key="unqiue">
+        <view class="impression-cell {{index!==0?'ps-before':''}}"></view>
+        <impression-poi class="impression-cell" data-index="{{index}}" impressionData="{{impressionData}}" impressionDataIndex="{{index}}"></impression-poi>
+    </block>
+</view>
+<bottom-loading showBottomLoading="{{showBottomLoadingView}}"></bottom-loading>

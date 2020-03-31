@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" v-bind:title="title">
+        {{message}}
+    </div>
+
+    <div id="app3" v-if="seen">
+        {{message}}
+    </div>
+
+    <div id="app4">
+        <ol>
+            <li v-for="item in items">{{item.text}}</li>
+        </ol>
+    </div>
+
+    <div id="app5">
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">reverse</button>
+    </div>
+
+    <div id="app6">
+        <p>{{message}}</p>
+        <input type="text" v-model="message">
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello Vue!",
+                title: new Date().toLocaleString()
+            }
+        });
+
+        var app3 = new Vue({
+            el: "#app3",
+            data: {
+                message: "You can see me.",
+                seen: false
+            }
+        })
+
+        var app4 = new Vue({
+            el: "#app4",
+            data: {
+                items: [
+                    {text: "text1"},
+                    {text: "text2"},
+                    {text: "text3"}
+                ]
+            }
+        })
+
+        var app5 = new Vue({
+            el: "#app5",
+            data: {
+                message: "message"
+            },
+            methods: {
+                reverseMessage: function(){
+                    this.message = this.message.split("").reverse().join("")
+                }
+            }
+        })
+
+        var app6 = new Vue({
+            el: "#app6",
+            data: {
+                message: "Hello Vue!"
+            }
+        })
+        
+    </script>
+</body>
+</html>
