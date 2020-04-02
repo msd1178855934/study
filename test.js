@@ -7,13 +7,13 @@
 // console.log(ex.a)
 // console.log(Example.name)
 
-// class Example { 
+// class Example {
 //     constructor(a) {
 //         this.a = a
 //     }
 // }
 
-// class Example1 { 
+// class Example1 {
 //     constructor(a) {
 //         this.a = a
 //     }
@@ -28,20 +28,26 @@
 // console.log('Example:prototype:a:' + Example.prototype.a)
 // console.log('Example:a:' + Example.a)
 
+/**
+ * Example2
+ */
 class Example2 {
-    constructor(a) {
-        console.log('Example2 constructor');
-        
-        this.a = a
-    }
+/**
+ * @param {*} a
+ */
+  constructor(a) {
+    console.log('Example2 constructor');
+
+    this.a = a;
+  }
 }
 
-var exa1 = new Example2(2);
-var exa2= new Example2(3);
+const exa1 = new Example2(2);
+const exa2= new Example2(3);
 
 console.log(Example2.prototype === exa1.__proto__);
 
-Example2.prototype.sub = 4
+Example2.prototype.sub = 4;
 
-console.log(Example2.prototype)
+console.log(Example2.prototype);
 console.log(exa2.__proto__.sub);
