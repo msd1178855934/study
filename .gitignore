@@ -75,3 +75,4 @@ passport-wsfed-saml2/
 
 # vscode
 .vscode
+${workspaceFolder}
