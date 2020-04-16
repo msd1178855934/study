@@ -72,3 +72,6 @@ passport-wsfed-saml2/
 
 # theia
 .theia
+
+# vscode
+.vscode
