@@ -105,4 +105,17 @@
     
 // console.log('testString'.substring(-3, 0))
 
-console.log(('000' + Math.floor(Math.random() * 999)).slice(-3))
+// console.log(('000' + Math.floor(Math.random() * 999)).slice(-3))
+
+
+// var Test = function() {
+//     console.log("test");
+//     this.init = function() {
+//         console.log("test init");
+//     }
+// }
+
+// (new Test).init()
+
+// 1 == 1 && !console.log('test') && console.log("test2")
+

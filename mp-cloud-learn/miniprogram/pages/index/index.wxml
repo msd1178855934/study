@@ -1,6 +1,0 @@
-<!--miniprogram/pages/index/index.wxml-->
-<button type="default" bind:tap="query1">数组查询</button>
-<button type="default" bind:tap="query2">字段查询</button>
-<button type="default" bind:tap="query3">正则查询</button>
-<button type="default" bind:tap="locationAdd">新增地点</button>
-<button type="default" bind:tap="locationQuery">查询地点</button>
