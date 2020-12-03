@@ -65,14 +65,6 @@ project.config.json
 study-resource/
 miniprogram_npm/
 
-# adfs-express
-passport-wsfed-saml2/
-*.cer
-*.key
-
-# theia
-.theia
-
 # vscode
 .vscode
 ${workspaceFolder}
